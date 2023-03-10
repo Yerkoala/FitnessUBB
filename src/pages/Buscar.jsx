@@ -1,18 +1,20 @@
 import {IonContent, IonPage} from '@ionic/react';
 import Header from '../components/Header/Header';
+import PrincipalBuscar from '../components/Buscar/PrincipalBuscar';
 import '../components/style.css';
-import PrincipalHome from '../components/Home/PrincipalHome';
 
 
-const Home = () => {
+
+const Buscar = () => {
+
   return (
     <IonPage>
       <IonContent fullscreen>
         <Header/>
-        <PrincipalHome/>        
+        <PrincipalBuscar/>
       </IonContent>
     </IonPage>
   );
 };
 
-export default Home;
+export default Buscar;

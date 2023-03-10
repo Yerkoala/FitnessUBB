@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import LoginInicioSesion from './LoginInicioSesion'
-import "./style.css"
+import "../style.css"
 const Login = ({ abierto, cerrarModal, abrirModal }) => {
 
     const [inicioSesion, setinicioSesion] = useState(false)

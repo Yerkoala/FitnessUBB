@@ -11,12 +11,12 @@
     top: 82%;
 }
 
-.mancuernaFondo{
+.mancuernaFondo {
     width: 50%;
     height: auto;
-    position: absolute;
-    z-index: 0;
-    top:70%;
+    position: fixed;
+    z-index: -1;
+    top: 70%;
 }
 
 /*--------------------------HEADER--------------------------*/
@@ -29,57 +29,18 @@
     display: flex;
     align-items: center;
     justify-content: end;
-  }
-  
-  .header strong {
+}
+
+.header strong {
     font-size: 20px;
     line-height: 26px;
-  }
-  
-  .header button{
+}
+
+.header button {
     margin-right: 10px;
     background-color: transparent;
-  }
-
-
-/*--------------------------HOME PRINCIPAL--------------------------*/
-
-.principalPantalla{
-    width: 100%;
-    height: 93vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-.principalCuerpo{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
 }
 
-.principalCuerpo button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    color: white;
-    background-color: #222428;
-    padding: 10px;
-    width: 180px;
-    height: 50px;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 15px;
-}
-
-.fitnessubbTitulo{
-    font-size: 50px;
-    text-align: center;
-    font-family: 'Libre Baskerville', serif;
-}
 /*--------------------------LOGIN--------------------------*/
 .linea {
     border-bottom: 1px solid black;
@@ -114,7 +75,7 @@
     border-radius: 20px;
     background-color: rgba(255, 255, 255, 0.906);
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    
+
 }
 
 .loginCuerpoModal h1 {
@@ -126,7 +87,7 @@
     font-size: 12px;
 }
 
-.botonIniciarSesion{
+.botonIniciarSesion {
     color: white;
     background-color: #222428;
     padding: 10px;
@@ -137,7 +98,7 @@
     border-radius: 15px;
 }
 
-.loginFormulario{
+.loginFormulario {
     margin-bottom: 30px;
 }
 
@@ -147,4 +108,70 @@
 }
 
 
-/*--------------------------INICIO SESION--------------------------*/
+/*--------------------------HOME PRINCIPAL--------------------------*/
+
+.principalPantalla {
+    width: 100%;
+    height: 93vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.principalCuerpo {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.botonPrincipalHome{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    background-color: #222428;
+    padding: 10px;
+    width: 180px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 15px;
+}
+
+.principalCuerpo button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    background-color: #222428;
+    padding: 10px;
+    width: 180px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 15px;
+}
+
+.fitnessubbTitulo {
+    font-size: 50px;
+    text-align: center;
+    font-family: 'Libre Baskerville', serif;
+}
+
+
+/*--------------------------BUSCAR PRINCIPAL--------------------------*/
+
+.principalPantallaBuscar{
+    width: 100%;
+    height: 93vh;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
