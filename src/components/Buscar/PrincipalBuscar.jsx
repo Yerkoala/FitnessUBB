@@ -1,7 +1,44 @@
-import React from 'react'
+import { IonButton } from '@ionic/react'
+import React, { useState } from 'react'
 import MANCUERNA from "../../images/mancuerna.png"
+import CartaListaRutina from './CartaListaRutina'
 
 const PrincipalBuscar = () => {
+
+    const [prueba, setprueba] = useState([
+        {
+            nombreRutina: "Super rutina de pecho",
+            categoria: "Pecho",
+            usuario: "Yerkoala",
+            valoracion: 4.5
+        },
+        {
+            nombreRutina: "Piernas para morir",
+            categoria: "Pierna",
+            usuario: "Yerkoala",
+            valoracion: 2.1
+        },
+        {
+            nombreRutina: "Master triceps",
+            categoria: "Triceps",
+            usuario: "Yerkoala",
+            valoracion: 3.9
+        },
+        {
+            nombreRutina: "Super rutina de pecho",
+            categoria: "Pecho",
+            usuario: "Yerkoala",
+            valoracion: 4.5
+        },
+        {
+            nombreRutina: "Piernas para morir",
+            categoria: "Pierna",
+            usuario: "Yerkoala",
+            valoracion: 2.1
+        }
+    ])
+
+
     return (
         <div className='principalPantallaBuscar'>
             <div>
@@ -22,12 +59,16 @@ const PrincipalBuscar = () => {
                 <ion-icon name="search"></ion-icon>
                 <input type="text" />
             </div>
-            <div>
-
+            <div className="contenedorListaRutinas">
+                <div className='listaRutinas'>
+                    {prueba.map((element, index) =>
+                        <CartaListaRutina key={index} lista={element} />
+                    )}
+                </div>
             </div>
-            <button>Subir</button>
+            <IonButton className='botonSubirRutina' color="dark">Subir Rutina</IonButton>
             <img className='mancuernaFondo' src={MANCUERNA} alt="" />
-            <button>Atras</button>
+            <IonButton routerLink='/' className='botonAtrasPrincipal' color="dark">Atras</IonButton>
         </div>
     )
 }
