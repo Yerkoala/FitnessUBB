@@ -1,5 +1,6 @@
 import { IonIcon } from '@ionic/react'
 import React from 'react'
+import '../style.css';
 
 const CartaListaRutina = ({ lista }) => {
     return (

@@ -34,7 +34,7 @@
 
 .header {
     width: 100%;
-    height: 7vh;
+    height: 6vh;
     border-bottom: 1px solid black;
     box-shadow: 2px 0px 5px #8c8c8c;
     display: flex;
@@ -123,7 +123,7 @@
 
 .principalPantalla {
     width: 100%;
-    height: 93vh;
+    height: 87vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -179,7 +179,7 @@
 
 .principalPantallaBuscar{
     width: 100%;
-    height: 93vh;
+    height: 87vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -238,9 +238,50 @@
     font-size: 35px;
 }
 
+/*-------------------------ESTADISTICA PRINCIPAL-------------------------*/
+.principalPantallaEstadisticas{
+    width: 100%;
+    height: 87vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.principalPantallaEstadisticas img{
+    width: 60%;
+    height: auto;
+}
 
 
+/*-------------------------NAVBAR-------------------------*/
 
+.navbar{
+    width: 100%;
+    height: 7vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid grey;
+}
+
+.navbarButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 33.33%;
+}
+
+#navbarButtonMedio{
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+}
+
+.navbarIcon{
+    color: gray;
+    font-size: 32px;
+}
 
 
 

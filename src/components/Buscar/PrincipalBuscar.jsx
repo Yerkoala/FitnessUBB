@@ -68,7 +68,6 @@ const PrincipalBuscar = () => {
             </div>
             <IonButton className='botonSubirRutina' color="dark">Subir Rutina</IonButton>
             <img className='mancuernaFondo' src={MANCUERNA} alt="" />
-            <IonButton routerLink='/' className='botonAtrasPrincipal' color="dark">Atras</IonButton>
         </div>
     )
 }

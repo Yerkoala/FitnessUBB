@@ -22,6 +22,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import Estadisticas from './pages/Estadisticas';
 
 
 setupIonicReact();
@@ -35,6 +36,9 @@ const App: React.FC = () => (
         </Route>
         <Route exact path="/buscar">
           <Buscar />
+        </Route>
+        <Route exact path="/estadisticas">
+          <Estadisticas />
         </Route>
         <Route exact path="/">
           <Redirect to="/home" />
