@@ -36,7 +36,7 @@ const PrincipalBuscar = () => {
             valoracion: 2.1
         }
     ])
-    const categoria = ["Categoria", "FullBody", "Push/Empuje"]
+    const categoriaSelect = ["Categoria", "FullBody", "Push/Empuje", "Pecho", "Pierna"]
 
     const [prueba, setprueba] = useState([
         {
@@ -85,7 +85,7 @@ const PrincipalBuscar = () => {
             <div>
                 <h1>Rutinas</h1>
                 <select id="mi-select" name="mi-select">
-                    {categoria.map((e) =>
+                    {categoriaSelect.map((e) =>
                         <option value={e}>{e}</option>
                     )}
 
