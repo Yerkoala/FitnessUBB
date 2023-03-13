@@ -1,8 +1,9 @@
 import { IonIcon } from '@ionic/react';
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../style.css';
 
 const CartaEjercicios = ({ isOpen, cerrarModal, element}) => {
+
 
   const handleModalDialogClick = (e) => {
     e.stopPropagation();
@@ -24,7 +25,7 @@ const CartaEjercicios = ({ isOpen, cerrarModal, element}) => {
           <IonIcon className='iconoValoracion' name='star-outline'></IonIcon>
         </div>
         <div className='Ejercicios'>
-          <h1>aqui van ejercicios</h1>
+          <h1>{element.ejercicios}</h1>
         </div>
         <button onClick={cerrarModal}>Descargar rutina</button>
       </div>
