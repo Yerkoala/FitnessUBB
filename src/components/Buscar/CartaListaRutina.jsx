@@ -1,18 +1,20 @@
 import { IonIcon } from '@ionic/react'
+import { star } from 'ionicons/icons';
 import { useState } from 'react'
 import '../style.css';
 import CartaEjercicios from './CartaEjercicios';
 
+
 const CartaListaRutina = ({ lista }) => {
-    const [abierto, setAbierto] = useState(false)
-
-    const abrirModal = () => {
-        setAbierto(true)
+    /*FUNCIONES PARA ABRIR/CERRAR EL MODAL DE LOS EJERCICIOS QUE CONTIENE CADA CARTA*/
+    const [abierto, setabierto] = useState(false)
+    const abrirModal=()=>{
+        setabierto(true)
     }
-    const cerrarModal = () => {
-        setAbierto(false)
+    const cerrarModal =()=>{
+        setabierto(false)
+        console.log(abierto)
     }
-
     return (
         <div className='cartaRutina' onClick={abrirModal}>
             <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", height: "100%" }}>
@@ -23,10 +25,10 @@ const CartaListaRutina = ({ lista }) => {
                 </div>
             </div>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", marginTop: "13px" }}>
-                <IonIcon className='star' name='star'></IonIcon>
+                <IonIcon className='star' icon={star}></IonIcon>
                 <p style={{ marginTop: "0", color: "goldenrod" }}>{lista.valoracion}</p>
             </div>
-            <CartaEjercicios isOpen={abierto} cerrarModal={cerrarModal} element={lista}/>
+            <CartaEjercicios isOpen={abierto} cerrarModal={cerrarModal} element={lista} ejercicios={lista.ejercicios}/>
         </div>
     )
 }

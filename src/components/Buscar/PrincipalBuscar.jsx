@@ -2,10 +2,68 @@ import { IonButton } from '@ionic/react'
 import { useState } from 'react'
 import MANCUERNA from "../../images/mancuerna.png"
 import CartaListaRutina from './CartaListaRutina'
+import CartaSubirRutina from './CartaSubirRutina'
 
 const PrincipalBuscar = () => {
+    /*FUNCIONES PARA ABRIR/CERRAR EL MODAL DE SUBIR NUEVA RUTINA*/
+    const [abiertoSubirRutina, setAbiertoSubirRutina] = useState(false)
+    const abrirModalSubirRutina = () => {
+        setAbiertoSubirRutina(true)
+        console.log(abiertoSubirRutina)
+    }
+    const cerrarModalSubirRutina = () => {
+        setAbiertoSubirRutina(false)
+        console.log(abiertoSubirRutina)
+    }
+
 
     const [buscador, setbuscador] = useState([
+        {
+            nombreRutina: "Super rutina de pecho",
+            categoria: "Pecho",
+            usuario: "Yerkoala",
+            valoracion: 4.5,
+            ejercicios:[
+                "Press de Banca con barra",
+                "3/4 Series",
+                "Press de banca inclinado con mancuerna",
+                "3 Series",
+                "Fondos en paralelas",
+                "3/4 Series",
+                "Press de pecho en máquina",
+                "3 Series",
+                "Press de Banca con barra",
+                "3/4 Series",
+                "Press de banca inclinado con mancuerna",
+                "3 Series",
+                "Fondos en paralelas",
+                "3/4 Series",
+                "Press de pecho en máquina",
+                "3 Series"
+            ]
+        },
+        {
+            nombreRutina: "Piernas para morir",
+            categoria: "Pierna",
+            usuario: "Feñusin",
+            valoracion: 2.1,
+            ejercicios:[
+                "Hola",
+                "Que tal",
+                "Hello"
+            ]
+        },
+        {
+            nombreRutina: "Master triceps",
+            categoria: "Triceps",
+            usuario: "Yerkoala",
+            valoracion: 3.9,
+            ejercicios:[
+                "Hola",
+                "Walala",
+                "Hello"
+            ]
+        },
         {
             nombreRutina: "Super rutina de pecho",
             categoria: "Pecho",
@@ -20,26 +78,13 @@ const PrincipalBuscar = () => {
         {
             nombreRutina: "Piernas para morir",
             categoria: "Pierna",
-            usuario: "Feñusin",
-            valoracion: 2.1
-        },
-        {
-            nombreRutina: "Master triceps",
-            categoria: "Triceps",
             usuario: "Yerkoala",
-            valoracion: 3.9
-        },
-        {
-            nombreRutina: "Super rutina de pecho",
-            categoria: "Pecho",
-            usuario: "Yerkoala",
-            valoracion: 4.5
-        },
-        {
-            nombreRutina: "Piernas para morir",
-            categoria: "Pierna",
-            usuario: "Yerkoala",
-            valoracion: 2.1
+            valoracion: 2.1,
+            ejercicios:[
+                "Hola",
+                "Que tal",
+                "Hello"
+            ]
         }
     ])
     const categoriaSelect = ["FullBody", "Push/Empuje","Pull/Jalon","Hombro", "Pecho", "Pierna", "Triceps","Biceps","Espalda","Abdomen"]
@@ -51,6 +96,52 @@ const PrincipalBuscar = () => {
             usuario: "Yerkoala",
             valoracion: 4.5,
             ejercicios:[
+                "Press de Banca con barra",
+                "3/4 Series",
+                "Press de banca inclinado con mancuerna",
+                "3 Series",
+                "Fondos en paralelas",
+                "3/4 Series",
+                "Press de pecho en máquina",
+                "3 Series",
+                "Press de Banca con barra",
+                "3/4 Series",
+                "Press de banca inclinado con mancuerna",
+                "3 Series",
+                "Fondos en paralelas",
+                "3/4 Series",
+                "Press de pecho en máquina",
+                "3 Series"
+            ]
+        },
+        {
+            nombreRutina: "Piernas para morir",
+            categoria: "Pierna",
+            usuario: "Feñusin",
+            valoracion: 2.1,
+            ejercicios:[
+                "Hola",
+                "Que tal",
+                "Hello"
+            ]
+        },
+        {
+            nombreRutina: "Master triceps",
+            categoria: "Triceps",
+            usuario: "Yerkoala",
+            valoracion: 3.9,
+            ejercicios:[
+                "Hola",
+                "Walalalala",
+                "Hello"
+            ]
+        },
+        {
+            nombreRutina: "Super rutina de pecho",
+            categoria: "Pecho",
+            usuario: "Yerkoala",
+            valoracion: 4.5,
+            ejercicios:[
                 "Hola",
                 "Que tal",
                 "Hello"
@@ -59,26 +150,13 @@ const PrincipalBuscar = () => {
         {
             nombreRutina: "Piernas para morir",
             categoria: "Pierna",
-            usuario: "Feñusin",
-            valoracion: 2.1
-        },
-        {
-            nombreRutina: "Master triceps",
-            categoria: "Triceps",
             usuario: "Yerkoala",
-            valoracion: 3.9
-        },
-        {
-            nombreRutina: "Super rutina de pecho",
-            categoria: "Pecho",
-            usuario: "Yerkoala",
-            valoracion: 4.5
-        },
-        {
-            nombreRutina: "Piernas para morir",
-            categoria: "Pierna",
-            usuario: "Yerkoala",
-            valoracion: 2.1
+            valoracion: 2.1,
+            ejercicios:[
+                "Hola",
+                "Que tal",
+                "Hello"
+            ]
         }
     ])
 
@@ -120,9 +198,9 @@ const PrincipalBuscar = () => {
                     )}
                 </div>
             </div>
-            <IonButton className='botonSubirRutina' color="dark">Subir Rutina</IonButton>
+            <IonButton className='botonSubirRutina' color="dark" onClick={abrirModalSubirRutina}>Subir Rutina</IonButton>
+            <CartaSubirRutina  isOpen={abiertoSubirRutina} cerrarModal={cerrarModalSubirRutina}/>
             <img className='mancuernaFondo' src={MANCUERNA} alt="" />
-
         </div>
     )
 }

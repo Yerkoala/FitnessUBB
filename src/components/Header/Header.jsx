@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { IonIcon } from '@ionic/react'
+import { person } from 'ionicons/icons';
 import '../style.css';
 import Login from './Login';
 
@@ -13,7 +15,7 @@ const Header = () => {
   return (
     <div>
       <div className="header">
-        <ion-icon name="person"></ion-icon>
+        <IonIcon icon={person}></IonIcon>
         <button onClick={abrirModal}><strong>Iniciar Sesion</strong></button>
       </div>
       <Login abierto={abierto} cerrarModal={cerrarModal}/>

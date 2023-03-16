@@ -249,11 +249,12 @@
     left: 0;
     z-index: 9999;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: start;
+    align-items: center;
 }
 
-.cartaCerrado{
+.cartaCerradoEjercicio{
     display: none;
 }
 
@@ -294,6 +295,7 @@
     display: flex;
     justify-content: space-around;
     margin-top: 10px;
+    margin-bottom: 10px;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -304,22 +306,81 @@
 }
 
 .Ejercicios{
-    margin-top: 10px;
+    margin-top: 5px;
     border: 1px solid black;
     width: 95%;
     height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    overflow-y: scroll;
 }
 
-.Modal button{
+.Ejercicios p{
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.descargarRutina{
     font-weight: bold;
-    font-size: 15px;
-    background-color: goldenrod;
+    font-size: 18px;
+    background-color: #222428;
+    color: white;
+    font-weight: bold;
     margin-top: 15px;
-    width: 150px;
-    height: 30px;
+    width: 170px;
+    height: 40px;
     border-radius: 16px;
 }
 
+.cerrarCartaEjercicios{
+    position: absolute;
+    bottom: 10%;
+    width: 100px;
+    height: 40px;
+    background-color: #222428;
+    color: antiquewhite;
+    font-weight: bold;
+    border-radius: 20px;
+
+}
+
+/*-------------------------CARTA SUBIR RUTINA MODAL-------------------------*/
+
+.cartaSubirRutina{
+    width: 100%;
+    height: 100vh;
+    background-color: #24242421;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cartaCerradoSubirRutina{
+    display: none;
+}
+
+.subirRutinaModal{
+    background-color: white;
+    margin-top: 30px;
+    width: 300px;
+    height: 510px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.388);
+}
 
 /*-------------------------ESTADISTICA PRINCIPAL-------------------------*/
 .principalPantallaEstadisticas{

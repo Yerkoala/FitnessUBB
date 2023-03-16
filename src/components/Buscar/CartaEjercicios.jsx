@@ -1,34 +1,30 @@
-import { IonIcon } from '@ionic/react';
-import React, { useEffect } from 'react'
+import { IonButton, IonIcon } from '@ionic/react';
+import { starOutline } from 'ionicons/icons';
 import '../style.css';
 
-const CartaEjercicios = ({ isOpen, cerrarModal, element}) => {
-
-
-  const handleModalDialogClick = (e) => {
-    e.stopPropagation();
-  }
-
+const CartaEjercicios = ({ isOpen, cerrarModal, element, ejercicios }) => {
   return (
-    <div className={isOpen ? "cartaEjercicioFondo" : "cartaCerrado"} onClick={cerrarModal}>
-      <div className='Modal' onClick={handleModalDialogClick}>
+    <div className={isOpen ? "cartaEjercicioFondo" : "cartaCerradoEjercicio"}>
+      <div className='Modal'>
         <h1>{element.nombreRutina}</h1>
         <div className="Subtitulo">
           <h2>{element.categoria}</h2>
           <h5>{element.usuario}</h5>
         </div>
         <div className='ModalIconos' >
-          <IonIcon className='iconoValoracion' name='star-outline'></IonIcon>
-          <IonIcon className='iconoValoracion' name='star-outline'></IonIcon>
-          <IonIcon className='iconoValoracion' name='star-outline'></IonIcon>
-          <IonIcon className='iconoValoracion' name='star-outline'></IonIcon>
-          <IonIcon className='iconoValoracion' name='star-outline'></IonIcon>
+          <IonIcon className='iconoValoracion' icon={starOutline}></IonIcon>
+          <IonIcon className='iconoValoracion' icon={starOutline}></IonIcon>
+          <IonIcon className='iconoValoracion' icon={starOutline}></IonIcon>
+          <IonIcon className='iconoValoracion' icon={starOutline}></IonIcon>
+          <IonIcon className='iconoValoracion' icon={starOutline}></IonIcon>
         </div>
         <div className='Ejercicios'>
-          <h1>{element.ejercicios}</h1>
+          {ejercicios.map((e, index) =>
+            <p key={index}>{e}</p>)}
         </div>
-        <button onClick={cerrarModal}>Descargar rutina</button>
+
       </div>
+      <IonButton onClick={cerrarModal} color='dark'>Cerrar</IonButton>
     </div>
   )
 }
