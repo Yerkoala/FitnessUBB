@@ -1,6 +1,6 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 
-const CartaRutinaPropias = ({titulo}) => {
+const CartaRutinaPropias = ({ titulo }) => {
   const [expanded, setExpanded] = useState(false);
 
   const handleClick = () => {
@@ -10,8 +10,7 @@ const CartaRutinaPropias = ({titulo}) => {
 
   return (
     <div
-      className="box"
-      style={{ height: expanded ? 'auto' : '80px' }}
+      className={`box ${expanded ? 'expanded' : ''}`}
       onClick={handleClick}
     >
       <h1 className='tituloCartaRutinaPropia'>{titulo}</h1>
@@ -20,6 +19,10 @@ const CartaRutinaPropias = ({titulo}) => {
           <button>Botón 1</button>
           <button>Botón 2</button>
           <button>Botón 3</button>
+          <button>Botón 3</button>
+          <button>Botón 3</button>
+          <button>Botón 3</button>
+
         </>
       )}
     </div>

@@ -1,6 +1,6 @@
 import { IonIcon } from '@ionic/react'
 import { star } from 'ionicons/icons';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import '../style.css';
 import CartaEjercicios from './CartaEjercicios';
 
@@ -13,6 +13,17 @@ const CartaListaRutina = ({ lista }) => {
         setabierto(!abierto)
         console.log(abierto)
     }
+
+    const [calificacion, setcalificacion] = useState(0)
+    const calculaValoracion = (valores) => {
+        const suma = valores.reduce((acumulador, valorActual) => acumulador + valorActual, 0);
+        setcalificacion((suma / valores.length).toFixed(1))
+    }
+
+    useEffect(() => {
+        calculaValoracion(lista.valoracion)
+    }, [])
+    
     return (
         <div className='cartaRutina' onClick={abrirCerrarModal}>
             <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", height: "100%" }}>
@@ -24,7 +35,7 @@ const CartaListaRutina = ({ lista }) => {
             </div>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", marginTop: "13px" }}>
                 <IonIcon className='star' icon={star}></IonIcon>
-                <p style={{ marginTop: "0", color: "goldenrod" }}>{lista.valoracion}</p>
+                <p style={{ marginTop: "0", color: "goldenrod" }}>{calificacion}</p>
             </div>
             {<CartaEjercicios isOpen={abierto} cerrarModal={abrirCerrarModal} element={lista} ejercicios={lista.ejercicios}/>}
         </div>

@@ -22,6 +22,7 @@
     left: 9%;
     bottom: 3%;
 }
+
 .mancuernaFondo {
     width: 50%;
     height: auto;
@@ -138,7 +139,7 @@
     gap: 10px;
 }
 
-.botonPrincipalHome{
+.botonPrincipalHome {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -177,25 +178,31 @@
 /*--------------------------CARTAS RUTINAS PROPIAS--------------------------*/
 .box {
     border-radius: 20px;
-    width: 300px;
+    width: 350px;
     background-color: #8f8a8a;
-    transition: height 5.0s ease;
-    cursor: pointer;
+    transition: max-height 1.0s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap:10px;
+    gap: 10px;
     padding-bottom: 40px;
+    overflow: hidden;
+    max-height: 80px;
+    box-sizing: border-box;
+  }
+  
+  .expanded {
+    max-height: 500px;
   }
 
-.tituloCartaRutinaPropia{
+.tituloCartaRutinaPropia {
     text-align: center;
 }
 
 
 /*--------------------------BUSCAR PRINCIPAL--------------------------*/
 
-.principalPantallaBuscar{
+.principalPantallaBuscar {
     width: 100%;
     height: 87vh;
     display: flex;
@@ -203,23 +210,24 @@
     align-items: center;
     position: relative;
 }
-.contenedorListaRutinas{
+
+.contenedorListaRutinas {
     width: 90%;
     height: 400px;
     overflow-y: auto;
 }
 
-.listaRutinas{
+.listaRutinas {
     height: max-content;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 10px;
     padding-right: 5px;
-    gap:10px;
+    gap: 10px;
 }
 
-.botonSubirRutina{
+.botonSubirRutina {
     color: white;
     background-color: #222428;
     height: 45px;
@@ -231,7 +239,7 @@
 
 /*-------------------------CARTA LISTA RUTINA-------------------------*/
 
-.cartaRutina{
+.cartaRutina {
     width: 100%;
     height: 80px;
     padding: 10px;
@@ -244,22 +252,22 @@
     background-color: white;
 }
 
-.cartaRutina h1{
+.cartaRutina h1 {
     font-weight: bold;
 }
 
-.cartaRutina p{
+.cartaRutina p {
     font-size: 1.1em;
 }
 
-.star{
+.star {
     color: gold;
     font-size: 35px;
 }
 
 
 /*-------------------------CARTA EJERCICIO MODAL-------------------------*/
-.cartaEjercicioFondo{
+.cartaEjercicioFondo {
     width: 100%;
     height: 100vh;
     background-color: #24242421;
@@ -273,13 +281,13 @@
     align-items: center;
 }
 
-.cartaCerradoEjercicio{
+.cartaCerradoEjercicio {
     display: none;
 }
 
 
 
-.Modal{
+.Modal {
     background-color: white;
     margin-top: 30px;
     width: 300px;
@@ -291,13 +299,14 @@
     align-items: center;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.388);
 }
-.Modal h1{
+
+.Modal h1 {
     text-align: center;
     margin: 0;
     padding: 0;
 }
 
-.Subtitulo{
+.Subtitulo {
     height: 30px;
     width: 100%;
     display: flex;
@@ -305,11 +314,11 @@
     justify-content: space-around;
 }
 
-.Subtitulo h2{
+.Subtitulo h2 {
     font-weight: bold;
 }
 
-.ModalIconos{
+.ModalIconos {
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -319,12 +328,12 @@
     padding-right: 10px;
 }
 
-.iconoValoracion{
+.iconoValoracion {
     font-size: 40px;
     color: goldenrod;
 }
 
-.Ejercicios{
+.Ejercicios {
     margin-top: 5px;
     border: 1px solid black;
     width: 95%;
@@ -338,13 +347,13 @@
     overflow-y: scroll;
 }
 
-.Ejercicios p{
+.Ejercicios p {
     text-align: center;
     margin: 0;
     padding: 0;
 }
 
-.descargarRutina{
+.descargarRutina {
     font-weight: bold;
     font-size: 18px;
     background-color: #222428;
@@ -356,7 +365,7 @@
     border-radius: 16px;
 }
 
-.cerrarCartaEjercicios{
+.cerrarCartaEjercicios {
     position: absolute;
     bottom: 10%;
     width: 100px;
@@ -370,7 +379,7 @@
 
 /*-------------------------CARTA SUBIR RUTINA MODAL-------------------------*/
 
-.cartaSubirRutina{
+.cartaSubirRutina {
     width: 100%;
     height: 100vh;
     background-color: #24242421;
@@ -384,11 +393,11 @@
     align-items: center;
 }
 
-.cartaCerradoSubirRutina{
+.cartaCerradoSubirRutina {
     display: none;
 }
 
-.subirRutinaModal{
+.subirRutinaModal {
     background-color: white;
     margin-top: 30px;
     width: 300px;
@@ -402,7 +411,7 @@
 }
 
 /*-------------------------ESTADISTICA PRINCIPAL-------------------------*/
-.principalPantallaEstadisticas{
+.principalPantallaEstadisticas {
     width: 100%;
     height: 87vh;
     display: flex;
@@ -411,7 +420,7 @@
     position: relative;
 }
 
-.principalPantallaEstadisticas img{
+.principalPantallaEstadisticas img {
     width: 60%;
     height: auto;
 }
@@ -419,7 +428,7 @@
 
 /*-------------------------NAVBAR-------------------------*/
 
-.navbar{
+.navbar {
     width: 100%;
     height: 7vh;
     display: flex;
@@ -436,22 +445,12 @@
     width: 33.33%;
 }
 
-#navbarButtonMedio{
+#navbarButtonMedio {
     border-left: 1px solid grey;
     border-right: 1px solid grey;
 }
 
-.navbarIcon{
+.navbarIcon {
     color: gray;
     font-size: 32px;
 }
-
-
-
-
-
-
-
-
-
-

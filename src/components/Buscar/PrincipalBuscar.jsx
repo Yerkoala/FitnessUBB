@@ -16,14 +16,19 @@ const PrincipalBuscar = () => {
         console.log(abiertoSubirRutina)
     }
 
+    /*CATEGORIAS DE MUSCULOS QUE HABRÁN DISPONIBLES */
+    const categoriaSelect = ["FullBody", "Push/Empuje", "Pull/Jalon", "Hombro", "Pecho", "Pierna", "Triceps", "Biceps", "Espalda", "Abdomen"]
 
+    /*OBJETOS QUE RELLENAN LAS TARJETAS*/
     const [buscador, setbuscador] = useState([
         {
             nombreRutina: "Super rutina de pecho",
             categoria: "Pecho",
             usuario: "Yerkoala",
-            valoracion: 4.5,
-            ejercicios:[
+            valoracion: [
+                1, 2, 3, 5, 3, 1, 4, 2, 
+            ],
+            ejercicios: [
                 "Press de Banca con barra",
                 "3/4 Series",
                 "Press de banca inclinado con mancuerna",
@@ -41,66 +46,17 @@ const PrincipalBuscar = () => {
                 "Press de pecho en máquina",
                 "3 Series"
             ]
-        },
-        {
-            nombreRutina: "Piernas para morir",
-            categoria: "Pierna",
-            usuario: "Feñusin",
-            valoracion: 2.1,
-            ejercicios:[
-                "Hola",
-                "Que tal",
-                "Hello"
-            ]
-        },
-        {
-            nombreRutina: "Master triceps",
-            categoria: "Triceps",
-            usuario: "Yerkoala",
-            valoracion: 3.9,
-            ejercicios:[
-                "Hola",
-                "Walala",
-                "Hello"
-            ]
-        },
-        {
-            nombreRutina: "Super rutina de pecho",
-            categoria: "Pecho",
-            usuario: "Yerkoala",
-            valoracion: 4.5,
-            ejercicios:[
-                "Hola",
-                "Que tal",
-                "Hello"
-            ]
-        },
-        {
-            nombreRutina: "Piernas para morir",
-            categoria: "Pierna",
-            usuario: "Yerkoala",
-            valoracion: 2.1,
-            ejercicios:[
-                "Hola",
-                "Que tal",
-                "Hello"
-            ]
-        }
-    ])
-    const categoriaSelect = ["FullBody", "Push/Empuje","Pull/Jalon","Hombro", "Pecho", "Pierna", "Triceps","Biceps","Espalda","Abdomen"]
+        }])
 
-    const agregarObjeto =()=>{
-        setprueba(new ({
-            
-        }))
-    }
     const [prueba, setprueba] = useState([
         {
             nombreRutina: "Super rutina de pecho",
             categoria: "Pecho",
             usuario: "Yerkoala",
-            valoracion: 4.5,
-            ejercicios:[
+            valoracion: [
+                1, 2, 3, 5, 3, 1, 4, 2, 1, 2, 1,5,2,1,1,1,1,1,1,1
+            ],
+            ejercicios: [
                 "Press de Banca con barra",
                 "3/4 Series",
                 "Press de banca inclinado con mancuerna",
@@ -118,52 +74,7 @@ const PrincipalBuscar = () => {
                 "Press de pecho en máquina",
                 "3 Series"
             ]
-        },
-        {
-            nombreRutina: "Piernas para morir",
-            categoria: "Pierna",
-            usuario: "Feñusin",
-            valoracion: 2.1,
-            ejercicios:[
-                "Hola",
-                "Que tal",
-                "Hello"
-            ]
-        },
-        {
-            nombreRutina: "Master triceps",
-            categoria: "Triceps",
-            usuario: "Yerkoala",
-            valoracion: 3.9,
-            ejercicios:[
-                "Hola",
-                "Walalalala",
-                "Hello"
-            ]
-        },
-        {
-            nombreRutina: "Super rutina de pecho",
-            categoria: "Pecho",
-            usuario: "Yerkoala",
-            valoracion: 4.5,
-            ejercicios:[
-                "Hola",
-                "Que tal",
-                "Hello"
-            ]
-        },
-        {
-            nombreRutina: "Piernas para morir",
-            categoria: "Pierna",
-            usuario: "Yerkoala",
-            valoracion: 2.1,
-            ejercicios:[
-                "Hola",
-                "Que tal",
-                "Hello"
-            ]
-        }
-    ])
+        }])
 
     const buscaRutinaNombre = (palabraBuscada) => {
         const ruti = prueba.filter(user => user.nombreRutina.includes(palabraBuscada))
@@ -199,12 +110,12 @@ const PrincipalBuscar = () => {
             <div className="contenedorListaRutinas">
                 <div className='listaRutinas'>
                     {buscador.length === 0 ? <h1 style={{ textAlign: "center" }}>No hay rutinas disponibles</h1> : buscador.map((element, index) =>
-                        <CartaListaRutina key={index} lista={element} />
+                        <CartaListaRutina key={index} lista={element}/>
                     )}
                 </div>
             </div>
             <IonButton className='botonSubirRutina' color="dark" onClick={abrirModalSubirRutina}>Subir Rutina</IonButton>
-            <CartaSubirRutina  isOpen={abiertoSubirRutina} cerrarModal={cerrarModalSubirRutina}/>
+            <CartaSubirRutina isOpen={abiertoSubirRutina} cerrarModal={cerrarModalSubirRutina} />
             <img className='mancuernaFondo' src={MANCUERNA} alt="" />
         </div>
     )

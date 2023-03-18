@@ -3,9 +3,13 @@ import { starOutline } from 'ionicons/icons';
 import '../style.css';
 
 const CartaEjercicios = ({ isOpen, cerrarModal, element, ejercicios }) => {
+  const handleModalDialogClick = (e) => {
+    e.stopPropagation();
+  }
+  
   return (
-    <div className={isOpen ? "cartaEjercicioFondo" : "cartaCerradoEjercicio"}>
-      <div className='Modal'>
+    <div className={isOpen ? "cartaEjercicioFondo" : "cartaCerradoEjercicio"} onClick={cerrarModal}>
+      <div className='Modal' onClick={handleModalDialogClick}>
         <h1>{element.nombreRutina}</h1>
         <div className="Subtitulo">
           <h2>{element.categoria}</h2>
@@ -22,7 +26,6 @@ const CartaEjercicios = ({ isOpen, cerrarModal, element, ejercicios }) => {
           {ejercicios.map((e, index) =>
             <p key={index}>{e}</p>)}
         </div>
-
       </div>
       <IonButton onClick={cerrarModal} color='dark'>Cerrar</IonButton>
     </div>
