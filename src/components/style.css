@@ -127,6 +127,7 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    overflow-y: scroll;
 }
 
 .principalCuerpo {
@@ -134,7 +135,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 10px;
 }
 
 .botonPrincipalHome{
@@ -171,6 +172,24 @@
     font-size: 50px;
     text-align: center;
     font-family: 'Libre Baskerville', serif;
+}
+
+/*--------------------------CARTAS RUTINAS PROPIAS--------------------------*/
+.box {
+    border-radius: 20px;
+    width: 300px;
+    background-color: #8f8a8a;
+    transition: height 5.0s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
+    padding-bottom: 40px;
+  }
+
+.tituloCartaRutinaPropia{
+    text-align: center;
 }
 
 

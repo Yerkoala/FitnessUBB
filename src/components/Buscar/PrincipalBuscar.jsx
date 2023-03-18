@@ -89,6 +89,11 @@ const PrincipalBuscar = () => {
     ])
     const categoriaSelect = ["FullBody", "Push/Empuje","Pull/Jalon","Hombro", "Pecho", "Pierna", "Triceps","Biceps","Espalda","Abdomen"]
 
+    const agregarObjeto =()=>{
+        setprueba(new ({
+            
+        }))
+    }
     const [prueba, setprueba] = useState([
         {
             nombreRutina: "Super rutina de pecho",
