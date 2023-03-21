@@ -26,6 +26,7 @@ const CartaEjercicios = ({ isOpen, cerrarModal, element, ejercicios }) => {
           {ejercicios.map((e, index) =>
             <p key={index}>{e}</p>)}
         </div>
+        <IonButton color='dark'>Descargar</IonButton>
       </div>
       <IonButton onClick={cerrarModal} color='dark'>Cerrar</IonButton>
     </div>

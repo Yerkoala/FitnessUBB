@@ -1,10 +1,37 @@
 import { IonButton } from '@ionic/react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import MANCUERNA from "../../images/mancuerna.png"
 import CartaListaRutina from './CartaListaRutina'
 import CartaSubirRutina from './CartaSubirRutina'
+import { db } from "../../firebase"
+import { collection, onSnapshot, query } from "firebase/firestore";
+import Spinner from './Spinner'
 
 const PrincipalBuscar = () => {
+    /*COMENZANDO A HACER PRUEBAS CON FIREBASE*/
+    const [loading, setloading] = useState(true)
+    const [prueba, setPrueba] = useState([])
+    const [buscador, setbuscador] = useState([])
+    const obtenerDatos = async () => {
+        setloading(true)
+        const q = query(collection(db, "rutinas"));
+        onSnapshot(q, (querySnapshot) => {
+            const nom = [];
+            querySnapshot.forEach((doc) => {
+                nom.push({ ...doc.data(), id: doc.id });
+                console.log(nom)
+            });
+            setPrueba(nom);
+            setbuscador(nom)
+        })
+        setloading(false)
+    }
+    useEffect(() => {
+        obtenerDatos();
+    }, [])
+
+
+
     /*FUNCIONES PARA ABRIR/CERRAR EL MODAL DE SUBIR NUEVA RUTINA*/
     const [abiertoSubirRutina, setAbiertoSubirRutina] = useState(false)
     const abrirModalSubirRutina = () => {
@@ -20,61 +47,7 @@ const PrincipalBuscar = () => {
     const categoriaSelect = ["FullBody", "Push/Empuje", "Pull/Jalon", "Hombro", "Pecho", "Pierna", "Triceps", "Biceps", "Espalda", "Abdomen"]
 
     /*OBJETOS QUE RELLENAN LAS TARJETAS*/
-    const [buscador, setbuscador] = useState([
-        {
-            nombreRutina: "Super rutina de pecho",
-            categoria: "Pecho",
-            usuario: "Yerkoala",
-            valoracion: [
-                1, 2, 3, 5, 3, 1, 4, 2, 
-            ],
-            ejercicios: [
-                "Press de Banca con barra",
-                "3/4 Series",
-                "Press de banca inclinado con mancuerna",
-                "3 Series",
-                "Fondos en paralelas",
-                "3/4 Series",
-                "Press de pecho en máquina",
-                "3 Series",
-                "Press de Banca con barra",
-                "3/4 Series",
-                "Press de banca inclinado con mancuerna",
-                "3 Series",
-                "Fondos en paralelas",
-                "3/4 Series",
-                "Press de pecho en máquina",
-                "3 Series"
-            ]
-        }])
 
-    const [prueba, setprueba] = useState([
-        {
-            nombreRutina: "Super rutina de pecho",
-            categoria: "Pecho",
-            usuario: "Yerkoala",
-            valoracion: [
-                1, 2, 3, 5, 3, 1, 4, 2, 1, 2, 1,5,2,1,1,1,1,1,1,1
-            ],
-            ejercicios: [
-                "Press de Banca con barra",
-                "3/4 Series",
-                "Press de banca inclinado con mancuerna",
-                "3 Series",
-                "Fondos en paralelas",
-                "3/4 Series",
-                "Press de pecho en máquina",
-                "3 Series",
-                "Press de Banca con barra",
-                "3/4 Series",
-                "Press de banca inclinado con mancuerna",
-                "3 Series",
-                "Fondos en paralelas",
-                "3/4 Series",
-                "Press de pecho en máquina",
-                "3 Series"
-            ]
-        }])
 
     const buscaRutinaNombre = (palabraBuscada) => {
         const ruti = prueba.filter(user => user.nombreRutina.includes(palabraBuscada))
@@ -110,12 +83,13 @@ const PrincipalBuscar = () => {
             <div className="contenedorListaRutinas">
                 <div className='listaRutinas'>
                     {buscador.length === 0 ? <h1 style={{ textAlign: "center" }}>No hay rutinas disponibles</h1> : buscador.map((element, index) =>
-                        <CartaListaRutina key={index} lista={element}/>
-                    )}
+                        <CartaListaRutina key={index} lista={element} />
+                    )}                  
                 </div>
+
             </div>
             <IonButton className='botonSubirRutina' color="dark" onClick={abrirModalSubirRutina}>Subir Rutina</IonButton>
-            <CartaSubirRutina isOpen={abiertoSubirRutina} cerrarModal={cerrarModalSubirRutina} />
+            <CartaSubirRutina isOpen={abiertoSubirRutina} cerrarModal={cerrarModalSubirRutina} categoriaSelect={categoriaSelect} />
             <img className='mancuernaFondo' src={MANCUERNA} alt="" />
         </div>
     )
