@@ -1,15 +1,12 @@
 import { useState, useEffect } from 'react';
 import { IonIcon } from '@ionic/react';
-import { starOutline, star, checkmarkCircleOutline } from 'ionicons/icons';
+import { starOutline, star, checkmarkCircleOutline, checkmarkCircle } from 'ionicons/icons';
 import { db } from "../../firebase"
 import { updateDoc, doc, getDoc } from "firebase/firestore";
 
 const ValoracionEstrellas = ({ id }) => {
     const [selectedStars, setSelectedStars] = useState(0);
-
-    useEffect(() => {
-        setSelectedStars(0);
-    }, []);
+    const [checkValoracion, setCheckValoracion] = useState(false);
 
     const handleStarClick = (index) => {
         setSelectedStars(index + 1);
@@ -17,16 +14,12 @@ const ValoracionEstrellas = ({ id }) => {
 
     const mostrarValoracion = async () => {
         const rutinaRef = doc(db, "rutinas", id);
-        const obtenerDoc= await getDoc(rutinaRef)
-        const nuevaValoracion=[...obtenerDoc.data().valoracion,selectedStars]
-        // Set the "capital" field of the city 'DC'
+        const obtenerDoc = await getDoc(rutinaRef)
+        const nuevaValoracion = [...obtenerDoc.data().valoracion, selectedStars]
         await updateDoc(rutinaRef, {
             valoracion: nuevaValoracion
         });
-        
-        console.log(nuevaValoracion)
-        console.log(selectedStars)
-        console.log(id)
+        setCheckValoracion(!checkValoracion);
     }
 
     const renderStars = () => {
@@ -45,8 +38,11 @@ const ValoracionEstrellas = ({ id }) => {
     return (
         <div className='ModalIconos'>
             {renderStars()}
-            <IonIcon className='checkValoracion' icon={checkmarkCircleOutline} onClick={mostrarValoracion}></IonIcon>
+            <div className='tickValoracionMensaje'>
+                {checkValoracion? <IonIcon className='checkValoracion' icon={checkmarkCircle} onClick={mostrarValoracion}></IonIcon>:<IonIcon className='checkValoracion' icon={checkmarkCircleOutline} onClick={mostrarValoracion}></IonIcon>}
+            </div>
+
         </div>
     );
 }
-export default ValoracionEstrellas
+export default ValoracionEstrellas;
