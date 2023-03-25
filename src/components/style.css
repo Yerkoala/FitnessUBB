@@ -330,7 +330,12 @@
 
 .iconoValoracion {
     font-size: 40px;
+    color: gold;
+}
+
+.checkValoracion{
     color: goldenrod;
+    font-size: 40px;
 }
 
 .Ejercicios {

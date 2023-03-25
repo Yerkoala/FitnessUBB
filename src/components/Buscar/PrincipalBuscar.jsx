@@ -7,13 +7,13 @@ import { db } from "../../firebase"
 import { collection, onSnapshot, query } from "firebase/firestore";
 import Spinner from './Spinner'
 
+
 const PrincipalBuscar = () => {
     /*COMENZANDO A HACER PRUEBAS CON FIREBASE*/
-    const [loading, setloading] = useState(true)
+    const [loading, setloading] = useState(false)
     const [prueba, setPrueba] = useState([])
     const [buscador, setbuscador] = useState([])
     const obtenerDatos = async () => {
-        setloading(true)
         const q = query(collection(db, "rutinas"));
         onSnapshot(q, (querySnapshot) => {
             const nom = [];
@@ -24,7 +24,6 @@ const PrincipalBuscar = () => {
             setPrueba(nom);
             setbuscador(nom)
         })
-        setloading(false)
     }
     useEffect(() => {
         obtenerDatos();
@@ -82,9 +81,11 @@ const PrincipalBuscar = () => {
             </div>
             <div className="contenedorListaRutinas">
                 <div className='listaRutinas'>
-                    {buscador.length === 0 ? <h1 style={{ textAlign: "center" }}>No hay rutinas disponibles</h1> : buscador.map((element, index) =>
-                        <CartaListaRutina key={index} lista={element} />
-                    )}                  
+                            {buscador.length === 0 ?
+                                <h1 style={{ textAlign: "center" }}>No hay rutinas disponibles</h1> :
+                                buscador.map((element, index) =>
+                                    <CartaListaRutina key={index} lista={element} />
+                                )}
                 </div>
 
             </div>

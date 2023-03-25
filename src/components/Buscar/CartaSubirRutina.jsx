@@ -28,18 +28,18 @@ const CartaSubirRutina = ({ isOpen, cerrarModal, categoriaSelect }) => {
         <div>
           <div className='selectsDiv'>
             {Array(elementos).fill(0).map((_, index) => 
-              <div>
+              <div key={index}>
                 <select name="ejercicios" id="ejericicos">
                 <option value="Ejercicios">Ejercicio</option>
                 {ejercicios.map((e,index)=>
-                  <option value={e}>{e}</option>
+                  <option key={index} value={e}>{e}</option>
                 )}
                 <option value="Pecho">Pecho</option>
               </select>
               <select name="serie" id="serie">
                 <option value="">Series</option>
                 {series.map((e,index)=>
-                <option value={e}>{e}</option>
+                <option key={index} value={e}>{e}</option>
                 )}
               </select>
               </div>
