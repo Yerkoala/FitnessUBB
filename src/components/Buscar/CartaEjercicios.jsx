@@ -1,5 +1,4 @@
-import { IonButton, IonIcon } from '@ionic/react';
-import { starOutline } from 'ionicons/icons';
+import { IonButton } from '@ionic/react';
 import '../style.css';
 import ValoracionEstrellas from './ValoracionEstrellas'
 
@@ -18,7 +17,7 @@ const CartaEjercicios = ({ isOpen, cerrarModal, element, ejercicios }) => {
           <h2>{element.categoria}</h2>
           <h5>{element.usuario}</h5>
         </div>
-        <ValoracionEstrellas/>
+        <ValoracionEstrellas /*AQUI DEBERIA PASAR EL ID Y LOS ELEMENTOS QUE REEMPLAZAN */ id={element.id}/>
         <div className='Ejercicios'>
           {ejercicios.map((e, index) =>
             <p key={index}>{e}</p>)}
