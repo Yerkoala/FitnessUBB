@@ -448,13 +448,11 @@
     flex-direction: column;
     align-items: center;
     gap: 5px;
+    padding-top: 10px;
     overflow-y: scroll;
 }
 
 .botonesSubirYAgregar{
-    position: fixed;
-    bottom: 13.5%;
-    left: 35%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -508,6 +506,27 @@
     color: gray;
     font-size: 32px;
 }
+
+/*---------------TARJETA DE EJERCICIOS---------------------*/
+.TarjetaEjercicioCuerpo{
+    margin: 0;
+    padding: 0;
+    background-color: aqua;
+    width: 90%;
+    height: 120px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.TarjetaEjercicioCuerpo p{
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    padding: 5px;
+}
+
 
 /*-------------------------SPINNER-------------------------*/
 
