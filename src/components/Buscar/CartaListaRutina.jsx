@@ -8,8 +8,7 @@ import CartaEjercicios from './CartaEjercicios';
 const CartaListaRutina = ({ lista }) => {
     /*FUNCIONES PARA ABRIR/CERRAR EL MODAL DE LOS EJERCICIOS QUE CONTIENE CADA CARTA*/
     const [abierto, setabierto] = useState(false)
-
-    const abrirCerrarModal =()=>{
+    const abrirCerrarModal = () => {
         setabierto(!abierto)
         console.log(abierto)
     }
@@ -23,7 +22,7 @@ const CartaListaRutina = ({ lista }) => {
     useEffect(() => {
         calculaValoracion(lista.valoracion)
     }, [])
-    
+
     return (
         <div className='cartaRutina' onClick={abrirCerrarModal}>
             <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", height: "100%" }}>
@@ -37,7 +36,7 @@ const CartaListaRutina = ({ lista }) => {
                 <IonIcon className='star' icon={star}></IonIcon>
                 <p style={{ marginTop: "0", color: "goldenrod" }}>{calificacion}</p>
             </div>
-            {<CartaEjercicios isOpen={abierto} cerrarModal={abrirCerrarModal} element={lista} ejercicios={lista.ejercicios}/>}
+            {<CartaEjercicios isOpen={abierto} cerrarModal={abrirCerrarModal} element={lista} ejercicios={lista.ejercicios} />}
         </div>
     )
 }

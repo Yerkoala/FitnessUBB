@@ -5,14 +5,15 @@ import CartaListaRutina from './CartaListaRutina'
 import CartaSubirRutina from './CartaSubirRutina'
 import { db } from "../../firebase"
 import { collection, onSnapshot, query } from "firebase/firestore";
-import Spinner from './Spinner'
+import categoriaSelect from '../../categoriaSelect'
+
 
 
 const PrincipalBuscar = () => {
     /*COMENZANDO A HACER PRUEBAS CON FIREBASE*/
-    const [loading, setloading] = useState(false)
     const [prueba, setPrueba] = useState([])
     const [buscador, setbuscador] = useState([])
+
     const obtenerDatos = async () => {
         const q = query(collection(db, "rutinas"));
         onSnapshot(q, (querySnapshot) => {
@@ -30,7 +31,6 @@ const PrincipalBuscar = () => {
     }, [])
 
 
-
     /*FUNCIONES PARA ABRIR/CERRAR EL MODAL DE SUBIR NUEVA RUTINA*/
     const [abiertoSubirRutina, setAbiertoSubirRutina] = useState(false)
     const abrirModalSubirRutina = () => {
@@ -41,12 +41,6 @@ const PrincipalBuscar = () => {
         setAbiertoSubirRutina(false)
         console.log(abiertoSubirRutina)
     }
-
-    /*CATEGORIAS DE MUSCULOS QUE HABRÁN DISPONIBLES */
-    const categoriaSelect = ["FullBody", "Push/Empuje", "Pull/Jalon", "Hombro", "Pecho", "Pierna", "Triceps", "Biceps", "Espalda", "Abdomen"]
-
-    /*OBJETOS QUE RELLENAN LAS TARJETAS*/
-
 
     const buscaRutinaNombre = (palabraBuscada) => {
         const ruti = prueba.filter(user => user.nombreRutina.includes(palabraBuscada))
@@ -90,7 +84,7 @@ const PrincipalBuscar = () => {
 
             </div>
             <IonButton className='botonSubirRutina' color="dark" onClick={abrirModalSubirRutina}>Subir Rutina</IonButton>
-            <CartaSubirRutina isOpen={abiertoSubirRutina} cerrarModal={cerrarModalSubirRutina} categoriaSelect={categoriaSelect} />
+            <CartaSubirRutina isOpen={abiertoSubirRutina} cerrarModal={cerrarModalSubirRutina}/>
             <img className='mancuernaFondo' src={MANCUERNA} alt="" />
         </div>
     )

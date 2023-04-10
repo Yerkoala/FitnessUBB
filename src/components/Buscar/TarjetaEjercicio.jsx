@@ -1,9 +1,9 @@
 import React from 'react'
 import "../style.css"
 
-const TarjetaEjercicio = ({nombre,img}) => {
+const TarjetaEjercicio = ({nombre,img,agregarEjercicio}) => {
   return (
-    <div className='TarjetaEjercicioCuerpo'>
+    <div className='TarjetaEjercicioCuerpo' onClick={()=>agregarEjercicio(nombre)}>
         <img src={img} alt="Imagen del ejercicio" />
         <p>{nombre}</p>
     </div>
