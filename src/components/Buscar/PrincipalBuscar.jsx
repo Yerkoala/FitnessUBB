@@ -20,8 +20,8 @@ const PrincipalBuscar = () => {
             const nom = [];
             querySnapshot.forEach((doc) => {
                 nom.push({ ...doc.data(), id: doc.id });
-                console.log(nom)
             });
+            console.log(nom)
             setPrueba(nom);
             setbuscador(nom)
         })

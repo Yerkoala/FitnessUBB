@@ -1,7 +1,7 @@
 const categoriaSelect = [
     "FullBody",
-     "Push/Empuje", 
-     "Pull/Jalon", 
+     "Push", 
+     "Pull", 
      "Hombro", 
      "Pecho", 
      "Pierna", 

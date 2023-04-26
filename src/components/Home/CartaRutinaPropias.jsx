@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 
-const CartaRutinaPropias = ({ titulo }) => {
+const CartaRutinaPropias = ({ titulo, nombres }) => {
   const [expanded, setExpanded] = useState(false);
+
 
   const handleClick = () => {
     setExpanded(!expanded);
-    console.log(expanded)
   };
 
   return (
@@ -14,16 +14,8 @@ const CartaRutinaPropias = ({ titulo }) => {
       onClick={handleClick}
     >
       <h1 className='tituloCartaRutinaPropia'>{titulo}</h1>
-      {expanded && (
-        <>
-          <button>Botón 1</button>
-          <button>Botón 2</button>
-          <button>Botón 3</button>
-          <button>Botón 3</button>
-          <button>Botón 3</button>
-          <button>Botón 3</button>
-
-        </>
+      {nombres.map((e, index) =>
+        <button key={index}>{e}</button>
       )}
     </div>
   )

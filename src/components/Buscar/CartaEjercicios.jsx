@@ -1,12 +1,25 @@
 import { IonButton } from '@ionic/react';
 import '../style.css';
 import ValoracionEstrellas from './ValoracionEstrellas'
+import rutinas from '../../rutinas';
 
-const CartaEjercicios = ({ isOpen, cerrarModal, element, ejercicios }) => {
+const CartaEjercicios = ({ isOpen, cerrarModal, element, ejerciciosArreglo }) => {
   const handleModalDialogClick = (e) => {
     e.stopPropagation();
   }
   
+  const descargarRutina=()=>{
+    if (window.confirm('Seguro que desea descargar esta rutina?')) {
+      const nuevaRutina={
+        nombre: element.nombreRutina,
+        ejercicios: ejerciciosArreglo
+      }
+      rutinas[0].Fullbody.push(nuevaRutina);
+  }}
+
+  const mostrarRutinas=()=>{
+    console.log(rutinas)
+  }
 
 
   return (
@@ -19,10 +32,10 @@ const CartaEjercicios = ({ isOpen, cerrarModal, element, ejercicios }) => {
         </div>
         <ValoracionEstrellas /*AQUI DEBERIA PASAR EL ID Y LOS ELEMENTOS QUE REEMPLAZAN */ id={element.id}/>
         <div className='Ejercicios'>
-          {ejercicios.map((e, index) =>
+          {ejerciciosArreglo.map((e, index) =>
             <p key={index}>{e}</p>)}
         </div>
-        <IonButton color='dark'>Descargar</IonButton>
+        <IonButton color='dark' onClick={mostrarRutinas}>Descargar</IonButton>
       </div>
       <IonButton onClick={cerrarModal} color='dark'>Cerrar</IonButton>
     </div>

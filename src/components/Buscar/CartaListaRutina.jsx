@@ -26,7 +26,7 @@ const CartaListaRutina = ({ lista }) => {
     return (
         <div className='cartaRutina' onClick={abrirCerrarModal}>
             <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", height: "100%" }}>
-                <h1>{lista.nombreRutina}</h1>
+                <h2 style={{fontWeight:"bold"}}>{lista.nombreRutina}</h2>
                 <div style={{ display: "flex", marginTop: "-15px", gap: "20px" }}>
                     <p>{lista.categoria}</p>
                     <p>{lista.usuario}</p>
@@ -36,7 +36,7 @@ const CartaListaRutina = ({ lista }) => {
                 <IonIcon className='star' icon={star}></IonIcon>
                 <p style={{ marginTop: "0", color: "goldenrod" }}>{calificacion}</p>
             </div>
-            {<CartaEjercicios isOpen={abierto} cerrarModal={abrirCerrarModal} element={lista} ejercicios={lista.ejercicios} />}
+            {<CartaEjercicios isOpen={abierto} cerrarModal={abrirCerrarModal} element={lista} ejerciciosArreglo={lista.ejercicios} />}
         </div>
     )
 }

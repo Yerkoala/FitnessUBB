@@ -1,6 +1,5 @@
 import { IonButton, IonIcon} from '@ionic/react'
 import { search,home,statsChartOutline } from 'ionicons/icons';
-import React from 'react'
 import "../style.css"
 
 const Navbar = () => {

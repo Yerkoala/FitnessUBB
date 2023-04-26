@@ -40,7 +40,7 @@
     box-shadow: 2px 0px 5px #8c8c8c;
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .header strong {
@@ -179,7 +179,7 @@
 .box {
     border-radius: 20px;
     width: 350px;
-    background-color: #8f8a8a;
+    background-color: gainsboro;
     transition: max-height 1.0s ease;
     display: flex;
     flex-direction: column;
@@ -192,11 +192,14 @@
 }
 
 .expanded {
-    max-height: 500px;
+    max-height: 700px;
 }
 
 .tituloCartaRutinaPropia {
+    font-weight: bold;
     text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 40px;
 }
 
 
@@ -241,7 +244,7 @@
 
 .cartaRutina {
     width: 100%;
-    height: 80px;
+    height: 95px;
     padding: 10px;
     border-radius: 16px;
     border: 1px solid grey;
@@ -504,6 +507,7 @@
     color: gray;
     font-size: 32px;
 }
+
 
 /*---------------TARJETA DE EJERCICIOS---------------------*/
 .TarjetaEjercicioCuerpo {
