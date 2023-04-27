@@ -1,25 +1,22 @@
 import { IonButton } from '@ionic/react';
 import '../style.css';
 import ValoracionEstrellas from './ValoracionEstrellas'
-import rutinas from '../../rutinas';
+import {useAgregarRutinaContext } from '../../RutinasProvider'
 
 const CartaEjercicios = ({ isOpen, cerrarModal, element, ejerciciosArreglo }) => {
+  const agregarRutina = useAgregarRutinaContext()
+
   const handleModalDialogClick = (e) => {
     e.stopPropagation();
   }
   
+
   const descargarRutina=()=>{
     if (window.confirm('Seguro que desea descargar esta rutina?')) {
-      const nuevaRutina={
-        nombre: element.nombreRutina,
-        ejercicios: ejerciciosArreglo
-      }
-      rutinas[0].Fullbody.push(nuevaRutina);
+      agregarRutina(element.nombreRutina,ejerciciosArreglo,element.categoria)
+      alert("Rutina descargada con ")
+      cerrarModal()
   }}
-
-  const mostrarRutinas=()=>{
-    console.log(rutinas)
-  }
 
 
   return (
@@ -35,7 +32,7 @@ const CartaEjercicios = ({ isOpen, cerrarModal, element, ejerciciosArreglo }) =>
           {ejerciciosArreglo.map((e, index) =>
             <p key={index}>{e}</p>)}
         </div>
-        <IonButton color='dark' onClick={mostrarRutinas}>Descargar</IonButton>
+        <IonButton color='dark' onClick={descargarRutina}>Descargar</IonButton>
       </div>
       <IonButton onClick={cerrarModal} color='dark'>Cerrar</IonButton>
     </div>

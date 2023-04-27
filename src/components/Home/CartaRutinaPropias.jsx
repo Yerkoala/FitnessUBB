@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
+import TarjetaRutina from './TarjetaRutina';
 
-const CartaRutinaPropias = ({ titulo, nombres }) => {
+
+const CartaRutinaPropias = ({ titulo, nombreRutinas }) => {
   const [expanded, setExpanded] = useState(false);
-
-
   const handleClick = () => {
     setExpanded(!expanded);
   };
@@ -14,8 +14,8 @@ const CartaRutinaPropias = ({ titulo, nombres }) => {
       onClick={handleClick}
     >
       <h1 className='tituloCartaRutinaPropia'>{titulo}</h1>
-      {nombres.map((e, index) =>
-        <button key={index}>{e}</button>
+      {nombreRutinas.map((e, index) =>
+        <TarjetaRutina key={index} titulo={e} categoria={titulo}/>
       )}
     </div>
   )

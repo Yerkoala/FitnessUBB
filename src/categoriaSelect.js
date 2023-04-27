@@ -1,5 +1,5 @@
 const categoriaSelect = [
-    "FullBody",
+    "Fullbody",
      "Push", 
      "Pull", 
      "Hombro", 

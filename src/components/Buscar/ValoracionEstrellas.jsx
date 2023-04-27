@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { IonIcon } from '@ionic/react';
 import { starOutline, star, checkmarkCircleOutline, checkmarkCircle } from 'ionicons/icons';
 import { db } from "../../firebase"
