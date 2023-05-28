@@ -5,7 +5,7 @@ import '../style.css';
 import CartaEjercicios from './CartaEjercicios';
 
 
-const CartaListaRutina = ({ lista }) => {
+const CartaListaRutina = ({ lista,logueado }) => {
     /*FUNCIONES PARA ABRIR/CERRAR EL MODAL DE LOS EJERCICIOS QUE CONTIENE CADA CARTA*/
     const [abierto, setabierto] = useState(false)
     const abrirCerrarModal = () => {
@@ -36,7 +36,7 @@ const CartaListaRutina = ({ lista }) => {
                 <IonIcon className='star' icon={star}></IonIcon>
                 <p style={{ marginTop: "0", color: "goldenrod" }}>{calificacion}</p>
             </div>
-            {<CartaEjercicios isOpen={abierto} cerrarModal={abrirCerrarModal} element={lista} ejerciciosArreglo={lista.ejercicios} />}
+            {<CartaEjercicios isOpen={abierto} cerrarModal={abrirCerrarModal} element={lista} ejerciciosArreglo={lista.ejercicios} logueado={logueado} />}
         </div>
     )
 }

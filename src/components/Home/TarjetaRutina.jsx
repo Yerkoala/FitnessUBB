@@ -1,25 +1,47 @@
+import { useState } from 'react';
 import { IonIcon } from '@ionic/react';
 import { trashOutline } from 'ionicons/icons';
 import { useBorrarRutinaContext } from '../../RutinasProvider'
+import { Link } from 'react-router-dom';
 
 const TarjetaRutina = ({ titulo, categoria }) => {
     const borrarRutina = useBorrarRutinaContext()
+    const [longPress, setLongPress] = useState(false)
 
-    const eliminarRutina = () => {
-        if (window.confirm('Seguro que desea borrar esta rutina?')) {
-            borrarRutina(categoria, titulo)
-        }
+    const startTimer = () => {
+        const timer = setTimeout(() => {
+            setLongPress(true)
+        }, 1500)
+        return timer
     }
 
-    const handleClick = (e) => {
-        e.stopPropagation();
-        console.log(titulo)
-      }
+    const cancelTimer = (timer) => {
+        clearTimeout(timer)
+    }
+
+    const handleTouchStart = (e) => {
+        const timer = startTimer()
+        e.persist()
+        e.target.dataset.longPressTimer = timer
+    }
+
+    const handleTouchEnd = (e) => {
+        const timer = e.target.dataset.longPressTimer
+        cancelTimer(timer)
+        if (longPress) {
+            if (window.confirm('Seguro que desea borrar esta rutina?')) {
+                borrarRutina(categoria, titulo)
+            }
+        }
+        setLongPress(false)
+    }
 
     return (
-        <div className='rutinaTarjeta' onClick={handleClick}>
-            <h2>{titulo}</h2>
-            <IonIcon className='trashIcon' icon={trashOutline} onClick={eliminarRutina}></IonIcon>
+        <div className='rutinaTarjeta' onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+            <Link to={`/home/${categoria}/${titulo}`}>
+                <h2>{titulo}</h2>
+            </Link>
+            {longPress && <IonIcon className='trashIcon' icon={trashOutline} />}
         </div>
     )
 }

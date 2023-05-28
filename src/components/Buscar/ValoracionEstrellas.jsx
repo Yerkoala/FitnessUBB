@@ -1,16 +1,23 @@
-import { useState} from 'react';
-import { IonIcon } from '@ionic/react';
-import { starOutline, star, checkmarkCircleOutline, checkmarkCircle } from 'ionicons/icons';
+import { useEffect, useState } from 'react'
+import { IonIcon } from '@ionic/react'
+import { starOutline, star, checkmarkCircleOutline, checkmarkCircle } from 'ionicons/icons'
 import { db } from "../../firebase"
-import { updateDoc, doc, getDoc } from "firebase/firestore";
+import { updateDoc, doc, getDoc } from "firebase/firestore"
 
-const ValoracionEstrellas = ({ id }) => {
+
+const ValoracionEstrellas = ({ id, logueado }) => {
     const [selectedStars, setSelectedStars] = useState(0);
     const [checkValoracion, setCheckValoracion] = useState(false);
 
+
     const handleStarClick = (index) => {
-        setSelectedStars(index + 1);
-    };
+        if (logueado) {
+            setSelectedStars(index + 1)
+        } else {
+            alert("Debes iniciar sesión para poder valorar esta rutina")
+        }
+
+    }
 
     const mostrarValoracion = async () => {
         const rutinaRef = doc(db, "rutinas", id);
@@ -39,7 +46,13 @@ const ValoracionEstrellas = ({ id }) => {
         <div className='ModalIconos'>
             {renderStars()}
             <div className='tickValoracionMensaje'>
-                {checkValoracion? <IonIcon className='checkValoracion' icon={checkmarkCircle} onClick={mostrarValoracion}></IonIcon>:<IonIcon className='checkValoracion' icon={checkmarkCircleOutline} onClick={mostrarValoracion}></IonIcon>}
+                {checkValoracion ?
+                    <>
+                        <IonIcon className='checkValoracion' icon={checkmarkCircle} onClick={mostrarValoracion}></IonIcon>
+                        <p className='mensajeDeGracias'>¡Gracias!</p>
+                    </>
+                    :
+                    <IonIcon className='checkValoracion' icon={checkmarkCircleOutline} onClick={mostrarValoracion}></IonIcon>}
             </div>
 
         </div>

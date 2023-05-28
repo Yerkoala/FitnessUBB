@@ -3,11 +3,11 @@ import '../style.css';
 import ValoracionEstrellas from './ValoracionEstrellas'
 import {useAgregarRutinaContext } from '../../RutinasProvider'
 
-const CartaEjercicios = ({ isOpen, cerrarModal, element, ejerciciosArreglo }) => {
+const CartaEjercicios = ({ isOpen, cerrarModal, element, ejerciciosArreglo, logueado }) => {
   const agregarRutina = useAgregarRutinaContext()
 
   const handleModalDialogClick = (e) => {
-    e.stopPropagation();
+    e.stopPropagation()
   }
   
 
@@ -27,7 +27,7 @@ const CartaEjercicios = ({ isOpen, cerrarModal, element, ejerciciosArreglo }) =>
           <h2>{element.categoria}</h2>
           <h5>{element.usuario}</h5>
         </div>
-        <ValoracionEstrellas /*AQUI DEBERIA PASAR EL ID Y LOS ELEMENTOS QUE REEMPLAZAN */ id={element.id}/>
+        <ValoracionEstrellas id={element.id} logueado={logueado}/>
         <div className='Ejercicios'>
           {ejerciciosArreglo.map((e, index) =>
             <p key={index}>{e}</p>)}

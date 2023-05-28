@@ -1,13 +1,13 @@
 import { IonButton, IonIcon } from '@ionic/react'
-import { addCircle, options } from 'ionicons/icons';
+import { addCircle} from 'ionicons/icons'
 import React, { useState } from 'react'
-import categoriaSelect from '../../categoriaSelect';
-import CartaListaEjerciciosSubir from './CartaListaEjerciciosSubir';
+import categoriaSelect from '../../categoriaSelect'
+import CartaListaEjerciciosSubir from './CartaListaEjerciciosSubir'
 import { v4 as uuid } from 'uuid'; //nos genera id
 import { db } from "../../firebase"
-import { setDoc, doc } from "firebase/firestore";
+import { setDoc, doc } from "firebase/firestore"
 
-const CartaSubirRutina = ({ isOpen, cerrarModal }) => {
+const CartaSubirRutina = ({ isOpen, cerrarModal,nomUsuario }) => {
   const [modalEjercicios, setModalEjercicios] = useState(false)
   const abrirCerrarModalEjercicios = () => {
     setModalEjercicios(!modalEjercicios)
@@ -16,7 +16,6 @@ const CartaSubirRutina = ({ isOpen, cerrarModal }) => {
   const [nombreDeRutina, setNombreDeRutina] = useState("")
   const [categoriaRutina, setCategoriaRutina] = useState("")
   const [ejerciciosObjeto, setEjerciciosObjeto] = useState([])
-  const [rutinaNube, setRutinaNube] = useState({})
 
   //GUARDA EL NOMBRE DE LA RUTINA
   const handleChangeInputNombreRutina = (e) => {
@@ -31,28 +30,20 @@ const CartaSubirRutina = ({ isOpen, cerrarModal }) => {
     setEjerciciosObjeto([...ejerciciosObjeto, nombreEjercicio])
   }
 
-  const subirRuti = () => {
-    setRutinaNube(
-      {
-        nombreRutina: nombreDeRutina,
-        categoria: categoriaRutina,
-        ejercicios: ejerciciosObjeto,
-        usuario: "Yerkoala",
-        valoracion: [5]
-      }
-    )
-  }
-
   const subirRutina = async () => {
     if (window.confirm('Seguro que desea subir esta rutina?')) {
       const docData = {
         nombreRutina: nombreDeRutina,
         categoria: categoriaRutina,
         ejercicios: ejerciciosObjeto,
-        usuario: "Yerkoala",
+        usuario: nomUsuario,
         valoracion: [5]
-      };
-      await setDoc(doc(db, "rutinas", uuid()), docData); 
+      }
+      await setDoc(doc(db, "rutinas", uuid()), docData)
+      setNombreDeRutina('')
+      setCategoriaRutina('')
+      setEjerciciosObjeto([])
+      cerrarModal()
   }}
 
 
@@ -83,7 +74,6 @@ const CartaSubirRutina = ({ isOpen, cerrarModal }) => {
         <div className='botonesSubirYAgregar'>
           <IonIcon class='agregarIcono' icon={addCircle} onClick={abrirCerrarModalEjercicios}></IonIcon>
           <IonButton color='dark' onClick={subirRutina}>Subir rutina</IonButton>
-          
         </div>
         <CartaListaEjerciciosSubir isOpen={modalEjercicios} cerrarModal={abrirCerrarModalEjercicios} agregarEjercicio={agregarEjercicio} />
       </div>

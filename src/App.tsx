@@ -25,6 +25,8 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import Estadisticas from './pages/Estadisticas';
 import { RutinasProvider } from './RutinasProvider';
+import CheckEjercicios from './components/Home/CheckEjercicios';
+import CronometroPantalla from './components/Home/CronometroPantalla';
 
 
 setupIonicReact();
@@ -32,12 +34,14 @@ setupIonicReact();
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-
       <RutinasProvider>
 
         <IonRouterOutlet>
           <Route exact path="/home">
             <Home />
+          </Route>
+          <Route exact path="/home/:categoria/:nombre">
+            <CheckEjercicios />
           </Route>
           <Route exact path="/buscar">
             <Buscar />
@@ -51,7 +55,7 @@ const App: React.FC = () => (
         </IonRouterOutlet>
 
       </RutinasProvider>
-      
+
     </IonReactRouter>
   </IonApp>
 );

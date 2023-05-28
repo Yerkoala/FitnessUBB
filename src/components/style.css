@@ -1,4 +1,9 @@
 /*--------------------------UNIVERSALES--------------------------*/
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .botonAtras {
     font-weight: bold;
     position: absolute;
@@ -36,7 +41,7 @@
 .header {
     width: 100%;
     height: 6vh;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid grey;
     box-shadow: 2px 0px 5px #8c8c8c;
     display: flex;
     align-items: center;
@@ -123,7 +128,7 @@
 
 .principalPantalla {
     width: 100%;
-    height: 87vh;
+    height: 93vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -184,21 +189,151 @@
     border-radius: 20px;
     padding-left: 15px;
     background-image: linear-gradient(95deg, #222428, transparent);
-  }
-  
-  .rutinaTarjeta h2 {
+}
+
+.rutinaTarjeta h2 {
     color: white;
-  }
-  
-  .trashIcon {
+    width: 290px;
+}
+
+.trashIcon {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%); /* Alinear verticalmente el icono en el centro del contenedor */
+    transform: translateY(-50%);
+    /* Alinear verticalmente el icono en el centro del contenedor */
     right: 10px;
     margin-right: 0;
     font-size: 25px;
     color: rgb(0, 0, 0);
-  }
+}
+
+/*--------------------------CHECK EJERCICIOS--------------------------*/
+.checkEjerciciosPantalla {
+    width: 100%;
+    height: 93vh;
+    background-color: white;
+    z-index: 9999;
+    position: fixed;
+    left: 0;
+}
+
+.checkEjerciciosPantalla h2 {
+    margin-left: 10px;
+}
+
+.checkEjerciciosPantallaCerrado {
+    display: none;
+}
+
+/*--------------------------CHECK EJERCICIOS TARJETA--------------------------*/
+.CheckEjerciciosDiv {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-top: 1px solid grey;
+    padding-left: 20px;
+}
+
+.CheckEjerciciosDiv p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #222428;
+    padding-right: 5px;
+}
+
+.atrasIonButton {
+    position: absolute;
+    bottom: 1px;
+    left: 6%;
+}
+
+/*--------------------------CRONOMETRO PANTALLA--------------------------*/
+.cronometroPantalla {
+    width: 100%;
+    height: 93vh;
+    background-color: white;
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.cronometroPantallaCerrado {
+    display: none;
+}
+
+.cronometroPantalla h2 {
+    padding: 2px;
+    text-align: center;
+    color: #222428;
+}
+
+.formularioDeCronometro {
+    display: flex;
+    justify-content: space-around;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.inputsCronometro {
+    width: 110px;
+}
+
+.iconosCronometroDiv {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.iconoCronometro {
+    font-size: 40px;
+    color: grey;
+}
+
+.imagenDeCronometro {
+    width: auto;
+    height: 100%;
+    margin: -35px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contenedorDeImagen {
+    margin-top: 15px;
+    width: 100%;
+    height: 350px;
+}
+
+.enviarIonButton {
+    position: absolute;
+    bottom: 1px;
+    left: 70%;
+}
+
+/*--------------------------CRONOMETRO--------------------------*/
+.temporizador {
+    height: 120px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.temporizador h1 {
+    margin: 0;
+    text-align: center;
+    font-size: 54px;
+    font-weight: bold;
+}
+
+.botonDescanso {
+    width: 60%;
+}
+
+
+
 
 /*--------------------------CARTAS RUTINAS PROPIAS--------------------------*/
 .box {
@@ -274,11 +409,11 @@
     padding: 10px;
     border-radius: 16px;
     border: 1px solid grey;
-    box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.595);
+    background-color: #f7f7f7;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: white;
+
 }
 
 .cartaRutina h1 {
@@ -369,8 +504,9 @@
 }
 
 .mensajeDeGracias {
-    font-size: 10px;
     color: goldenrod;
+    position: fixed;
+    top: 160px;
 }
 
 .checkValoracion {
@@ -492,7 +628,7 @@
 /*-------------------------ESTADISTICA PRINCIPAL-------------------------*/
 .principalPantallaEstadisticas {
     width: 100%;
-    height: 87vh;
+    height: 93vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -538,29 +674,53 @@
 /*---------------TARJETA DE EJERCICIOS---------------------*/
 .TarjetaEjercicioCuerpo {
     width: 100%;
-    height: 100px;
+    height: 110px;
     background-color: white;
     border-top: 1px solid grey;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.TarjetaEjercicioCuerpo:active{
-    background-color: grey;
+
+.TarjetaEjercicioCuerpo:active {
+    background-color: rgb(80, 80, 80);
     color: white;
 }
 
-.TarjetaEjercicioCuerpo img {
-    max-width: auto;
-    height: 100%;
-    object-fit: contain;
+.divTexto p:active {
+    color: white;
 }
 
-.TarjetaEjercicioCuerpo p {
+.divImagen {
+    width: 35%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.divTexto {
+    width: 65%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.divImagen img {
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+    padding-left: 10px;
+}
+
+.divTexto p {
     margin: 0;
     padding: 10px;
     text-align: center;
     font-size: 16px;
+    font-weight: bold;
+    color: grey;
 }
 
 

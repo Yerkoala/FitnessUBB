@@ -6,40 +6,58 @@ import CartaSubirRutina from './CartaSubirRutina'
 import { db } from "../../firebase"
 import { collection, onSnapshot, query } from "firebase/firestore";
 import categoriaSelect from '../../categoriaSelect'
+import {obtenerDisplayNameUsuario } from '../../firebase';
 
 
 
-const PrincipalBuscar = () => {
+const PrincipalBuscar = ({logueado}) => {
+    /*OBTIENE EL NOMBRE DEL CURRENT USER LOGUEADO */
+    const [displayName, setDisplayName] = useState(null)
+    useEffect(() => {
+        const unsubscribe = obtenerDisplayNameUsuario((name) => {
+          setDisplayName(name);
+        })
+    
+        return () => {
+          unsubscribe()
+        }
+      }, [])
+
     /*COMENZANDO A HACER PRUEBAS CON FIREBASE*/
     const [prueba, setPrueba] = useState([])
     const [buscador, setbuscador] = useState([])
 
     const obtenerDatos = async () => {
-        const q = query(collection(db, "rutinas"));
+        const q = query(collection(db, "rutinas"))
         onSnapshot(q, (querySnapshot) => {
             const nom = [];
             querySnapshot.forEach((doc) => {
-                nom.push({ ...doc.data(), id: doc.id });
+                nom.push({ ...doc.data(), id: doc.id })
             });
             console.log(nom)
-            setPrueba(nom);
+            setPrueba(nom)
             setbuscador(nom)
         })
     }
+
     useEffect(() => {
-        obtenerDatos();
+        obtenerDatos()
     }, [])
 
 
     /*FUNCIONES PARA ABRIR/CERRAR EL MODAL DE SUBIR NUEVA RUTINA*/
     const [abiertoSubirRutina, setAbiertoSubirRutina] = useState(false)
     const abrirModalSubirRutina = () => {
-        setAbiertoSubirRutina(true)
-        console.log(abiertoSubirRutina)
+        if(logueado){
+            console.log("Esta logueado")
+            setAbiertoSubirRutina(true)
+        }else{
+            alert("Debes iniciar sesión para poder subir tu rutina")
+            console.log("No está logueado")
+        }
     }
     const cerrarModalSubirRutina = () => {
         setAbiertoSubirRutina(false)
-        console.log(abiertoSubirRutina)
     }
 
     const buscaRutinaNombre = (palabraBuscada) => {
@@ -78,13 +96,13 @@ const PrincipalBuscar = () => {
                             {buscador.length === 0 ?
                                 <h1 style={{ textAlign: "center" }}>No hay rutinas disponibles</h1> :
                                 buscador.map((element, index) =>
-                                    <CartaListaRutina key={index} lista={element} />
+                                    <CartaListaRutina key={index} lista={element} logueado={logueado}/>
                                 )}
                 </div>
 
             </div>
             <IonButton className='botonSubirRutina' color="dark" onClick={abrirModalSubirRutina}>Subir Rutina</IonButton>
-            <CartaSubirRutina isOpen={abiertoSubirRutina} cerrarModal={cerrarModalSubirRutina}/>
+            <CartaSubirRutina isOpen={abiertoSubirRutina} cerrarModal={cerrarModalSubirRutina} nomUsuario={displayName}/>
             <img className='mancuernaFondo' src={MANCUERNA} alt="" />
         </div>
     )

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react"
+import React, { useContext, useState} from "react"
 
 const rutinaContext = React.createContext()
 const agregarRutinaContext = React.createContext()
@@ -22,7 +22,7 @@ export function RutinasProvider({ children }) {
         Fullbody: [
             {
                 nombre: "Rutina Fullbody 1",
-                ejercicios: ["Press de banca", "Sentadilla"],
+                ejercicios: ["Remo en máquina","Press banca inclinado con mancuernas", "Press de hombro con mancuernas","Extensión de tríceps con cable de agarre inverso con barra","Curl alterno con mancuernas", "Sentadilla", "Extensión de piernas"],
             },
             {
                 nombre: "Rutina 2",
@@ -57,11 +57,21 @@ export function RutinasProvider({ children }) {
         Pecho: [
             {
                 nombre: "Rutina 1",
-                ejercicios: ["Ejemploxxx 1", "Ejemplo 2"],
+                ejercicios: ["Press banca inclinado con mancuernas", "Cruce de poleas","Press de banca inclinado con barra","Aperturas con mancuernas"],
             },
             {
                 nombre: "Rutina 2",
-                ejercicios: ["Ejemplo 1", "Ejemplo 2"],
+                ejercicios: ["Press de banca en máquina sentado", "Press de banca declinado con barra","Press de banca declinado con mancuernas","Fondos en barras paralelas"],
+            },
+        ],
+        Espalda: [
+            {
+                nombre: "Rutina 1 Espalda",
+                ejercicios: ["Remo con mancuerna a una mano", "Jalón con agarre ancho","Remo en máquina","Jalón al pecho con agarre cerrado","Elevaciones en barra fija con agarre supinado"],
+            },
+            {
+                nombre: "Rutina 2 Espalda",
+                ejercicios: ["Press de banca en máquina sentado", "Press de banca declinado con barra","Press de banca declinado con mancuernas","Fondos en barras paralelas"],
             },
         ]
     }
