@@ -2,10 +2,14 @@ import { IonButton, IonIcon } from '@ionic/react'
 import { ellipseOutline, ellipse } from 'ionicons/icons'
 import ejercicios from '../../ejercicios'
 import { useEffect, useState } from 'react'
+import { useAgregarProgresoContext } from '../../provider/EstadisticasProvider'
 import Cronometro from './Cronometro'
-import '../style.css';
+import '../style.css'
 
 const CronometroPantalla = ({ ejercicionombre, isOpen, abrirCerrar, marcarCheck }) => {
+    const agregarProgreso = useAgregarProgresoContext()
+
+
 
     /*A penas se monta el componente me trae la imagen del ejercicio*/
     const [imagenEjercicio, setimagenEjercicio] = useState(null);
@@ -34,6 +38,11 @@ const CronometroPantalla = ({ ejercicionombre, isOpen, abrirCerrar, marcarCheck 
     const [progreso, setProgreso] = useState([])
 
     const handleIniciarDescanso = () => {
+        if (peso.trim() === '' || repeticiones.trim() === '') {
+            alert('No has ingresado tu Peso o tus Repeticiones');
+            return; // Detener la ejecución si los campos están vacíos
+          }
+
         const nuevoProgreso = {
             peso: peso,
             repeticiones: repeticiones,
@@ -55,9 +64,11 @@ const CronometroPantalla = ({ ejercicionombre, isOpen, abrirCerrar, marcarCheck 
 
     const enviarDatos = () => {
         if (window.confirm("¿Deseas enviar los datos? Asegurate de haber completado tus series")) {
+            agregarProgreso(ejercicionombre, progreso)
             console.log(progreso)
             marcarCheck()
             abrirCerrar()
+            setIconosLlenos(0)
         }
     }
 
@@ -68,17 +79,19 @@ const CronometroPantalla = ({ ejercicionombre, isOpen, abrirCerrar, marcarCheck 
     return (
         <div className={isOpen ? "cronometroPantalla" : "cronometroPantallaCerrado"} onClick={handleOnClick}>
             <h2 style={{ fontWeight: 'bold' }}>{ejercicionombre}</h2>
-            <div className="formularioDeCronometro">
-                <input className="inputsCronometro" type="text" placeholder="Peso" value={peso} onChange={(e) => setPeso(e.target.value)} />
-                <input className="inputsCronometro" type="text" placeholder="Repeticiones" value={repeticiones} onChange={(e) => setRepeticiones(e.target.value)} />
+            <div className="fondoFormularioDeCronometro">
+                <div className="formularioDeCronometro">
+                    <input className="inputsCronometro" type="text" placeholder="Peso en kg" value={peso} onChange={(e) => setPeso(e.target.value)} />
+                    <input className="inputsCronometro" type="text" placeholder="Repeticiones" value={repeticiones} onChange={(e) => setRepeticiones(e.target.value)} />
 
-                <select name="Series" id="" onChange={handleSeriesChange}>
-                    <option value="2">Series</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
+                    <select name="Series" id="" onChange={handleSeriesChange}>
+                        <option value="2">Series</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
             </div>
             <div className="iconosCronometroDiv">
                 {Array.from({ length: seriesSeleccionadas }, (_, index) => (

@@ -1,5 +1,5 @@
 import { IonButton, IonIcon} from '@ionic/react'
-import { search,home,statsChartOutline } from 'ionicons/icons';
+import { search,home,statsChart } from 'ionicons/icons';
 import "../style.css"
 
 const Navbar = () => {
@@ -14,7 +14,7 @@ const Navbar = () => {
         </IonIcon>
       </IonButton>
       <IonButton routerLink='/estadisticas' className='navbarButton' fill="clear">
-        <IonIcon icon={statsChartOutline} className='navbarIcon'>
+        <IonIcon icon={statsChart} className='navbarIcon'>
         </IonIcon>
       </IonButton>
     </div>

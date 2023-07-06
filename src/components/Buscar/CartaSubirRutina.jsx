@@ -27,7 +27,9 @@ const CartaSubirRutina = ({ isOpen, cerrarModal,nomUsuario }) => {
   }
   //GUARDA LOS EJERCICIOS QUE TIENEN LA RUTINA
   const agregarEjercicio = (nombreEjercicio) => {
-    setEjerciciosObjeto([...ejerciciosObjeto, nombreEjercicio])
+    if (!ejerciciosObjeto.includes(nombreEjercicio)) {
+      setEjerciciosObjeto([...ejerciciosObjeto, nombreEjercicio])
+    }
   }
 
   const subirRutina = async () => {

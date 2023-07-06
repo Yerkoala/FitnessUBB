@@ -1,5 +1,5 @@
 import { IonButton } from '@ionic/react'
-import { useRutinaContext } from '../../RutinasProvider'
+import { useRutinaContext } from '../../provider/RutinasProvider'
 import CheckEjerciciosDiv from './CheckEjerciciosDiv'
 import { useParams } from 'react-router-dom'
 import "../style.css"

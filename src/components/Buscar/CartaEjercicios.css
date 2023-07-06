@@ -1,0 +1,132 @@
+.cartaEjercicioFondo {
+    width: 100%;
+    height: 100vh;
+    background-color: #24242421;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cartaCerradoEjercicio {
+    display: none;
+}
+
+.Modal {
+    background-color: white;
+    margin-top: 20px;
+    width: 350px;
+    height: 580px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.388);
+}
+
+.Modal h1 {
+    font-size: 30px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #222428;
+}
+
+.Subtitulo {
+    height: 30px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.Subtitulo h2 {
+    font-weight: bold;
+    color: gray;
+}
+
+.ModalIconos {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.iconoValoracion {
+    font-size: 40px;
+    color: gold;
+}
+
+.tickValoracionMensaje {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.mensajeDeGracias {
+    color: goldenrod;
+    position: fixed;
+    top: 160px;
+}
+
+.checkValoracion {
+    color: goldenrod;
+    font-size: 40px;
+}
+
+.Ejercicios {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    width: 95%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    overflow-y: scroll;
+}
+
+.Ejercicios p {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.descargarRutina {
+    font-weight: bold;
+    font-size: 18px;
+    background-color: #222428;
+    color: white;
+    font-weight: bold;
+    margin-top: 15px;
+    width: 170px;
+    height: 40px;
+    border-radius: 16px;
+}
+
+.cerrarCartaEjercicios {
+    position: absolute;
+    bottom: 10%;
+    width: 100px;
+    height: 40px;
+    background-color: #222428;
+    color: antiquewhite;
+    font-weight: bold;
+    border-radius: 20px;
+
+}

@@ -123,6 +123,13 @@ a {
     margin-bottom: 2px;
 }
 
+.errorMensaje{
+    color:red;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
 
 /*--------------------------HOME PRINCIPAL--------------------------*/
 
@@ -142,6 +149,7 @@ a {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    margin-bottom: 15px;
 }
 
 .botonPrincipalHome {
@@ -178,6 +186,7 @@ a {
     font-size: 50px;
     text-align: center;
     font-family: 'Libre Baskerville', serif;
+    border-bottom:1px solid #222428;
 }
 
 /*--------------------------TARJETA RUTINA--------------------------*/
@@ -189,6 +198,7 @@ a {
     border-radius: 20px;
     padding-left: 15px;
     background-image: linear-gradient(95deg, #222428, transparent);
+    box-shadow: 0 4px 10px rgba(0,0,0,.25);
 }
 
 .rutinaTarjeta h2 {
@@ -204,7 +214,7 @@ a {
     right: 10px;
     margin-right: 0;
     font-size: 25px;
-    color: rgb(0, 0, 0);
+    color: #222428;
 }
 
 /*--------------------------CHECK EJERCICIOS--------------------------*/
@@ -267,6 +277,12 @@ a {
     padding: 2px;
     text-align: center;
     color: #222428;
+}
+
+.fondoFormularioDeCronometro{
+    background-color: #222428;
+    height: 50px;
+    padding-top: 12px;
 }
 
 .formularioDeCronometro {
@@ -339,7 +355,8 @@ a {
 .box {
     border-radius: 20px;
     width: 350px;
-    background-color: gainsboro;
+    box-shadow: 0 4px 10px rgba(0,0,0,.25);
+    background-color: rgb(240, 240, 245);
     transition: max-height 1.0s ease;
     display: flex;
     flex-direction: column;
@@ -360,6 +377,7 @@ a {
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
     font-size: 40px;
+    color: #222428;
 }
 
 
@@ -373,11 +391,21 @@ a {
     align-items: center;
     position: relative;
 }
+.principalPantallaBuscar h1{
+    color: #222428;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 35px;
+}
+
+.buscarRutinaInput{
+    border-radius: 15px;
+}
 
 .contenedorListaRutinas {
     margin-top: 10px;
     width: 90%;
-    height: 400px;
+    height: 70%;
     overflow-y: auto;
 }
 
@@ -403,160 +431,9 @@ a {
 
 /*-------------------------CARTA LISTA RUTINA-------------------------*/
 
-.cartaRutina {
-    width: 100%;
-    height: 95px;
-    padding: 10px;
-    border-radius: 16px;
-    border: 1px solid grey;
-    background-color: #f7f7f7;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-}
-
-.cartaRutina h1 {
-    font-weight: bold;
-}
-
-.cartaRutina p {
-    font-size: 1.1em;
-}
-
-.star {
-    color: gold;
-    font-size: 35px;
-}
-
 
 /*-------------------------CARTA EJERCICIO MODAL-------------------------*/
-.cartaEjercicioFondo {
-    width: 100%;
-    height: 100vh;
-    background-color: #24242421;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
-.cartaCerradoEjercicio {
-    display: none;
-}
-
-.Modal {
-    background-color: white;
-    margin-top: 20px;
-    width: 350px;
-    height: 580px;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.388);
-}
-
-.Modal h1 {
-    text-align: center;
-    margin: 0;
-    padding: 0;
-}
-
-.Subtitulo {
-    height: 30px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.Subtitulo h2 {
-    font-weight: bold;
-}
-
-.ModalIconos {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.iconoValoracion {
-    font-size: 40px;
-    color: gold;
-}
-
-.tickValoracionMensaje {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-}
-
-.mensajeDeGracias {
-    color: goldenrod;
-    position: fixed;
-    top: 160px;
-}
-
-.checkValoracion {
-    color: goldenrod;
-    font-size: 40px;
-}
-
-.Ejercicios {
-    margin-top: 5px;
-    margin-bottom: 10px;
-    border: 1px solid black;
-    width: 95%;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    overflow-y: scroll;
-}
-
-.Ejercicios p {
-    text-align: center;
-    margin: 0;
-    padding: 0;
-}
-
-.descargarRutina {
-    font-weight: bold;
-    font-size: 18px;
-    background-color: #222428;
-    color: white;
-    font-weight: bold;
-    margin-top: 15px;
-    width: 170px;
-    height: 40px;
-    border-radius: 16px;
-}
-
-.cerrarCartaEjercicios {
-    position: absolute;
-    bottom: 10%;
-    width: 100px;
-    height: 40px;
-    background-color: #222428;
-    color: antiquewhite;
-    font-weight: bold;
-    border-radius: 20px;
-
-}
 
 /*-------------------------CARTA SUBIR RUTINA MODAL-------------------------*/
 
@@ -649,7 +526,9 @@ a {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-top: 1px solid grey;
+    border-top: 1px solid #222428;
+    background-color: white;
+    margin-top: 1px;
 }
 
 .navbarButton {
@@ -661,12 +540,12 @@ a {
 }
 
 #navbarButtonMedio {
-    border-left: 1px solid grey;
-    border-right: 1px solid grey;
+    border-left: 1px solid #222428;
+    border-right: 1px solid #222428;
 }
 
 .navbarIcon {
-    color: gray;
+    color: #222428;
     font-size: 32px;
 }
 
@@ -676,7 +555,7 @@ a {
     width: 100%;
     height: 110px;
     background-color: white;
-    border-top: 1px solid grey;
+    border-top: 1px solid #222428;
     display: flex;
     align-items: center;
     justify-content: center;

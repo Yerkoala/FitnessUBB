@@ -18,36 +18,57 @@ export const db = getFirestore()
 
 
 export const loginUsuario = (email, password) => {
-    const auth = getAuth();
-    signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed in
-            const user = userCredential.user
-            console.log(user)
-            console.log(auth)
-        })
-        .catch((error) => {
-            console.log(error.code)
-            console.log(error.message)
-        })
+  const auth = getAuth()
+  return signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user
+          console.log(user)
+          console.log(auth)
+          return user // Devuelve el usuario
+      })
+      .catch((error) => {
+          console.log(error.code)
+          console.log(error.message)
+          return null // Devuelve null en caso de error
+      })
 }
+
 
 export const crearNuevoUsuario = (email, password, nomUsuario) => {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password, nomUsuario)
-        .then((userCredential) => {
-            // Signed in
-            const user = userCredential.user
-            updateProfile(user, { displayName: nomUsuario })
-            console.log(user)
-            // ...
-        })
-        .catch((error) => {
-            const errorCode = error.code
-            const errorMessage = error.message
-            // ..
-        });
-}
+      .then((userCredential) => {
+        // Signed up successfully
+        const user = userCredential.user;
+        updateProfile(user, { displayName: nomUsuario })
+          .then(() => {
+            // Profile updated successfully
+            signInWithEmailAndPassword(auth, email, password)
+              .then((signInUserCredential) => {
+                // Sign in successful
+                const signInUser = signInUserCredential.user;
+                console.log("Usuario registrado e inició sesión:", signInUser);
+                // Aquí puedes redirigir a la página principal de tu aplicación o realizar otras acciones después del inicio de sesión automático.
+              })
+              .catch((signInError) => {
+                // Sign in error after sign up
+                console.error("Error al iniciar sesión después del registro:", signInError);
+              });
+          })
+          .catch((profileUpdateError) => {
+            // Profile update error
+            console.error("Error al actualizar el perfil del usuario:", profileUpdateError);
+          });
+      })
+      .catch((error) => {
+        // Sign up error
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error("Error al registrar el usuario:", errorCode, errorMessage);
+      });
+  };
+  
 
 export const cerrarSesion = () => {
     const auth = getAuth()

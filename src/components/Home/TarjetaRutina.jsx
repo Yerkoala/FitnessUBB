@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { IonIcon } from '@ionic/react';
-import { trashOutline } from 'ionicons/icons';
-import { useBorrarRutinaContext } from '../../RutinasProvider'
+import { chevronForwardOutline } from 'ionicons/icons';
+import { useBorrarRutinaContext } from '../../provider/RutinasProvider'
 import { Link } from 'react-router-dom';
 
 const TarjetaRutina = ({ titulo, categoria }) => {
@@ -41,7 +41,10 @@ const TarjetaRutina = ({ titulo, categoria }) => {
             <Link to={`/home/${categoria}/${titulo}`}>
                 <h2>{titulo}</h2>
             </Link>
-            {longPress && <IonIcon className='trashIcon' icon={trashOutline} />}
+            {/* {longPress && <IonIcon className='trashIcon' icon={trashOutline} />} */}
+            <Link to={`/home/${categoria}/${titulo}`}>
+                <IonIcon className='trashIcon' icon={chevronForwardOutline} />
+            </Link>
         </div>
     )
 }

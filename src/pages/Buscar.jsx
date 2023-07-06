@@ -10,7 +10,7 @@ const Buscar = () => {
   const sesionIniciada = () => {
     setLogin(!login)
   }
-
+  
   return (
     <IonPage>
       <IonContent fullscreen>

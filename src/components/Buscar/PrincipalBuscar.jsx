@@ -21,7 +21,7 @@ const PrincipalBuscar = ({logueado}) => {
         return () => {
           unsubscribe()
         }
-      }, [])
+      })
 
     /*COMENZANDO A HACER PRUEBAS CON FIREBASE*/
     const [prueba, setPrueba] = useState([])
@@ -81,7 +81,7 @@ const PrincipalBuscar = ({logueado}) => {
     return (
         <div className='principalPantallaBuscar'>
             <div>
-                <h1>Rutinas</h1>
+                <h1 className='principalPantallaBuscarTitulo'>Rutinas</h1>
                 <select id="categoria" name="categoria" onChange={handleOnChangeSelect}>
                     <option value="">Categoría</option>
                     {categoriaSelect.map((e, index) =>
@@ -89,7 +89,7 @@ const PrincipalBuscar = ({logueado}) => {
                     )}
                 </select>
                 <ion-icon name="search"></ion-icon>
-                <input type="text" onChange={handleOnChange} />
+                <input className='buscarRutinaInput' type="text" onChange={handleOnChange} />
             </div>
             <div className="contenedorListaRutinas">
                 <div className='listaRutinas'>

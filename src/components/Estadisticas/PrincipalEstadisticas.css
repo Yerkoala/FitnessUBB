@@ -1,0 +1,83 @@
+.probando{
+    color: grey;
+    position: absolute;
+    top: 30%;
+    transform: translateY(-50%);
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.graficoStats{
+    margin-top: 10px;
+    width: 95%;
+    height: 185px;
+    border: 2px solid #222428;
+    border-radius: 10px;
+    box-shadow: 2px 3px 3px 3px rgba(0, 0, 0, 0.205);
+}
+.infoStats{
+    margin-top: 10px;
+    width: 95%;
+    height: 55%;
+    background-color: #222428;
+    border-radius: 10px;
+    padding: 8px;
+    box-shadow: 2px 3px 3px 3px rgba(0, 0, 0, 0.205);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.generalStats{
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.especificoStats{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+.especificoStats h4, .especificoStats h6{
+    color: #222428;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+.especificoStats h4{
+    font-size: 1rem;
+}
+.especificoStats h6{
+    font-weight: bold;
+    color: black;
+    font-size: 1.3rem;
+}
+
+.estadisticasTitulo{
+    font-weight: bold;
+    color: #222428;
+    border-bottom:1px solid #222428;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 35px;
+}
+
+.generalStatsTresSeries{
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 2px;
+}
+.generalStatsTresSeries p{
+    text-align: center;
+    margin: 0;
+    padding: 0;
+
+}

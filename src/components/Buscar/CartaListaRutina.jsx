@@ -1,11 +1,11 @@
 import { IonIcon } from '@ionic/react'
 import { star } from 'ionicons/icons';
 import { useState, useEffect } from 'react'
-import '../style.css';
 import CartaEjercicios from './CartaEjercicios';
+import './CartaListaRutina.css';
 
 
-const CartaListaRutina = ({ lista,logueado }) => {
+const CartaListaRutina = ({ lista, logueado }) => {
     /*FUNCIONES PARA ABRIR/CERRAR EL MODAL DE LOS EJERCICIOS QUE CONTIENE CADA CARTA*/
     const [abierto, setabierto] = useState(false)
     const abrirCerrarModal = () => {
@@ -24,17 +24,20 @@ const CartaListaRutina = ({ lista,logueado }) => {
     }, [])
 
     return (
-        <div className='cartaRutina' onClick={abrirCerrarModal}>
-            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", height: "100%" }}>
-                <h2 style={{fontWeight:"bold"}}>{lista.nombreRutina}</h2>
-                <div style={{ display: "flex", marginTop: "-15px", gap: "20px" }}>
-                    <p>{lista.categoria}</p>
+        <div className='cartaRutinaCuerpo' onClick={abrirCerrarModal}>
+            <div className='cartaRutinaTextos'>
+                <div className='cartaRutinaTitulo'>
+                    <h3>{lista.nombreRutina}</h3>
+                </div>
+                <div className='cartaRutinaCategoriaUsuario'>
+                    <p style={{fontWeight:"bold",color:"GrayText"}}>{lista.categoria}</p>
                     <p>{lista.usuario}</p>
                 </div>
             </div>
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", marginTop: "13px" }}>
+            <div className='cartaRutinaValoracion'>
                 <IonIcon className='star' icon={star}></IonIcon>
-                <p style={{ marginTop: "0", color: "goldenrod" }}>{calificacion}</p>
+                <p>{calificacion}</p>
+                <p style={{fontSize:"14px"}}>{lista.valoracion.length}</p>
             </div>
             {<CartaEjercicios isOpen={abierto} cerrarModal={abrirCerrarModal} element={lista} ejerciciosArreglo={lista.ejercicios} logueado={logueado} />}
         </div>

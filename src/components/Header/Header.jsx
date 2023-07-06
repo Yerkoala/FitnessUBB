@@ -22,14 +22,16 @@ const Header = ({ sesionIniciada, logueado }) => {
   }
 
   useEffect(() => {
+    console.log("LOGUEADO: ",logueado)
     const unsubscribe = obtenerDisplayNameUsuario((name) => {
       setDisplayName(name);
-    });
+    })
 
     return () => {
-      unsubscribe();
-    };
-  }, []);
+      unsubscribe()
+    }
+    
+  });
 
 
   return (
@@ -48,7 +50,7 @@ const Header = ({ sesionIniciada, logueado }) => {
           </>
         }
       </div>
-      <Login abierto={abierto} cerrarModal={abrirCerrar} sesionIniciada={sesionIniciada}/>
+      <Login abierto={abierto} cerrarModal={abrirCerrar} sesionIniciada={sesionIniciada} logueado={logueado}/>
     </div>
 
   );

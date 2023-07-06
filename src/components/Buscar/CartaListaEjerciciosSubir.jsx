@@ -43,7 +43,7 @@ const CartaListaEjerciciosSubir = ({ isOpen, cerrarModal,agregarEjercicio }) => 
                     </select>
                     <input type="text" onChange={handleOnChange}/>
                 </div>
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", height: "460px", overflowY: "scroll" }}>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", height: "520px", overflowY: "scroll" }}>
                     {buscador.map((e, index) =>
                         <TarjetaEjercicio key={index} nombre={e.nombre} img={e.img} agregarEjercicio={agregarEjercicio}/>
                     )}

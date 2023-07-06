@@ -2,7 +2,7 @@ import "../style.css"
 import MANCUERNA from "../../images/mancuerna.png"
 import CartaRutinaPropias from './CartaRutinaPropias'
 //import rutinas from '../../rutinas'
-import { useRutinaContext} from '../../RutinasProvider'
+import { useRutinaContext} from '../../provider/RutinasProvider'
 
 const PrincipalHome = () => {
     const rutinasObjeto = useRutinaContext()

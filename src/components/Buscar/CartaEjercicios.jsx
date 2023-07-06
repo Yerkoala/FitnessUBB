@@ -1,7 +1,7 @@
 import { IonButton } from '@ionic/react';
-import '../style.css';
+import './CartaEjercicios.css';
 import ValoracionEstrellas from './ValoracionEstrellas'
-import {useAgregarRutinaContext } from '../../RutinasProvider'
+import {useAgregarRutinaContext } from '../../provider/RutinasProvider'
 
 const CartaEjercicios = ({ isOpen, cerrarModal, element, ejerciciosArreglo, logueado }) => {
   const agregarRutina = useAgregarRutinaContext()
@@ -14,7 +14,7 @@ const CartaEjercicios = ({ isOpen, cerrarModal, element, ejerciciosArreglo, logu
   const descargarRutina=()=>{
     if (window.confirm('Seguro que desea descargar esta rutina?')) {
       agregarRutina(element.nombreRutina,ejerciciosArreglo,element.categoria)
-      alert("Rutina descargada con ")
+      alert("Rutina descargada con éxito")
       cerrarModal()
   }}
 
