@@ -1,5 +1,5 @@
 import { IonButton, IonIcon } from '@ionic/react'
-import { addCircle} from 'ionicons/icons'
+import { addCircle, closeCircleOutline } from 'ionicons/icons'
 import React, { useState } from 'react'
 import categoriaSelect from '../../categoriaSelect'
 import CartaListaEjerciciosSubir from './CartaListaEjerciciosSubir'
@@ -7,7 +7,7 @@ import { v4 as uuid } from 'uuid'; //nos genera id
 import { db } from "../../firebase"
 import { setDoc, doc } from "firebase/firestore"
 
-const CartaSubirRutina = ({ isOpen, cerrarModal,nomUsuario }) => {
+const CartaSubirRutina = ({ isOpen, cerrarModal, nomUsuario }) => {
   const [modalEjercicios, setModalEjercicios] = useState(false)
   const abrirCerrarModalEjercicios = () => {
     setModalEjercicios(!modalEjercicios)
@@ -32,7 +32,17 @@ const CartaSubirRutina = ({ isOpen, cerrarModal,nomUsuario }) => {
     }
   }
 
+  const borrarEjercicio = (nombreEjercicio) => {
+    const nuevosEjercicios = ejerciciosObjeto.filter((e) => e !== nombreEjercicio);
+    setEjerciciosObjeto(nuevosEjercicios)
+  }
+
   const subirRutina = async () => {
+    if (nombreDeRutina.trim() === '' || categoriaRutina.trim() === '' || ejerciciosObjeto.length === 0) {
+      alert('Falta ingresar un dato');
+      return; // Detener la ejecución si los campos están vacíos
+    }
+
     if (window.confirm('Seguro que desea subir esta rutina?')) {
       const docData = {
         nombreRutina: nombreDeRutina,
@@ -45,8 +55,20 @@ const CartaSubirRutina = ({ isOpen, cerrarModal,nomUsuario }) => {
       setNombreDeRutina('')
       setCategoriaRutina('')
       setEjerciciosObjeto([])
+      document.getElementById('categoria').value = '';
       cerrarModal()
-  }}
+    }
+  }
+
+  const limpiarAlCerrar = () => {
+    cerrarModal()
+    setNombreDeRutina('')
+    setCategoriaRutina('')
+    setEjerciciosObjeto([])
+    document.getElementById('categoria').value = '';
+  }
+
+
 
 
   return (
@@ -68,7 +90,10 @@ const CartaSubirRutina = ({ isOpen, cerrarModal,nomUsuario }) => {
         <div>
           <div className='selectsDiv'>
             {ejerciciosObjeto.map((e, index) =>
-              <p key={index}>{e}</p>
+              <div key={index} className='divEjerciciosSubirRutina'>
+                <p>{e}</p>
+                <IonIcon class='borrarIcono' icon={closeCircleOutline} onClick={() => borrarEjercicio(e)}></IonIcon>
+              </div>
             )}
           </div>
         </div>
@@ -79,7 +104,7 @@ const CartaSubirRutina = ({ isOpen, cerrarModal,nomUsuario }) => {
         </div>
         <CartaListaEjerciciosSubir isOpen={modalEjercicios} cerrarModal={abrirCerrarModalEjercicios} agregarEjercicio={agregarEjercicio} />
       </div>
-      <IonButton onClick={cerrarModal} color='dark'>Cerrar</IonButton>
+      <IonButton onClick={limpiarAlCerrar} color='dark'>Cerrar</IonButton>
     </div>
   )
 }

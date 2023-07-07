@@ -11,7 +11,8 @@ const formatTime = (time) => {
     return minutes + ':' + seconds
 }
 
-const Cronometro = ({ segundos,onIniciarDescanso,botonBloqueado }) => {
+const Cronometro = ({ onIniciarDescanso,botonBloqueado}) => {
+    const [segundos,setSegundos]=useState(5)  
     const [countdown, setCountdown] = useState(segundos)
     const timerId = useRef()
 
@@ -34,9 +35,22 @@ const Cronometro = ({ segundos,onIniciarDescanso,botonBloqueado }) => {
         }
     }, [countdown])
 
+    const abrirCuadroDialogo = () => {
+        const newSegundos = parseInt(window.prompt("Anotar tiempo descanso en segundos"));
+        if (!isNaN(newSegundos)) {
+          setSegundos(newSegundos);
+          setCountdown(newSegundos);
+        }
+      };
+    
+      useEffect(() => {
+        setCountdown(segundos);
+      }, [segundos]);
+
+
     return (
         <div className='temporizador'>
-            <h1>{formatTime(countdown)}</h1>
+            <h1 onClick={abrirCuadroDialogo}>{formatTime(countdown)}</h1>
             <IonButton className='botonDescanso' onClick={comienzaTimer} color={'dark'}>Iniciar Descanso</IonButton>
         </div>
     );

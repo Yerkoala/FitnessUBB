@@ -21,7 +21,6 @@ const CheckEjercicios = () => {
       {ejerciciosArreglo.map((e, index) =>
         <CheckEjerciciosDiv key={index} ejercicionombre={e} />
       )}
-      <IonButton routerLink='/' className='atrasIonButton' color='dark'>Atras</IonButton>
     </div>
   )
 }

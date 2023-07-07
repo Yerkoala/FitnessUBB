@@ -1,8 +1,7 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useState,useEffect } from "react"
 
 const estadisticasContext = React.createContext()
 const agregarProgresoContext = React.createContext()
-const borrarRutinaContext = React.createContext()
 
 export function useEstadisticasContext() {
     return useContext(estadisticasContext)
@@ -10,10 +9,6 @@ export function useEstadisticasContext() {
 
 export function useAgregarProgresoContext() {
     return useContext(agregarProgresoContext)
-}
-
-export function useBorrarRutinaContext() {
-    return useContext(borrarRutinaContext)
 }
 
 export function EstadisticasProvider({ children }) {
@@ -38,20 +33,25 @@ export function EstadisticasProvider({ children }) {
         })
     }
 
+    useEffect(() => {
+        const storedEstadisticasObjeto = localStorage.getItem("estadisticasObjeto");
+        if (storedEstadisticasObjeto) {
+            const parsedEstadisticasObjeto = JSON.parse(storedEstadisticasObjeto);
+            if (JSON.stringify(parsedEstadisticasObjeto) !== JSON.stringify(estadisticasObjeto)) {
+                setEstadisticasObjeto(parsedEstadisticasObjeto);
+            }
+        }
+    }, []);
 
-
-    const borrarRutina = (categoria, nombre) => {
-
-    }
-
+    useEffect(() => {
+        localStorage.setItem("estadisticasObjeto", JSON.stringify(estadisticasObjeto));
+    }, [estadisticasObjeto]);
 
 
     return (
         <estadisticasContext.Provider value={estadisticasObjeto}>
             <agregarProgresoContext.Provider value={agregarProgreso}>
-                <borrarRutinaContext.Provider value={borrarRutina}>
                     {children}
-                </borrarRutinaContext.Provider>
             </agregarProgresoContext.Provider>
         </estadisticasContext.Provider>
 

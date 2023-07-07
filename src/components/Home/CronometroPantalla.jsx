@@ -38,10 +38,6 @@ const CronometroPantalla = ({ ejercicionombre, isOpen, abrirCerrar, marcarCheck 
     const [progreso, setProgreso] = useState([])
 
     const handleIniciarDescanso = () => {
-        if (peso.trim() === '' || repeticiones.trim() === '') {
-            alert('No has ingresado tu Peso o tus Repeticiones');
-            return; // Detener la ejecución si los campos están vacíos
-          }
 
         const nuevoProgreso = {
             peso: peso,
@@ -78,11 +74,11 @@ const CronometroPantalla = ({ ejercicionombre, isOpen, abrirCerrar, marcarCheck 
 
     return (
         <div className={isOpen ? "cronometroPantalla" : "cronometroPantallaCerrado"} onClick={handleOnClick}>
-            <h2 style={{ fontWeight: 'bold' }}>{ejercicionombre}</h2>
+            <h2 style={{ fontWeight: 'bold',fontSize:"35px" }}>{ejercicionombre}</h2>
             <div className="fondoFormularioDeCronometro">
                 <div className="formularioDeCronometro">
-                    <input className="inputsCronometro" type="text" placeholder="Peso en kg" value={peso} onChange={(e) => setPeso(e.target.value)} />
-                    <input className="inputsCronometro" type="text" placeholder="Repeticiones" value={repeticiones} onChange={(e) => setRepeticiones(e.target.value)} />
+                    <input className="inputsCronometro" id="peso" type="text" placeholder="Peso en kg" value={peso} onChange={(e) => setPeso(e.target.value)} />
+                    <input className="inputsCronometro" id="repeticiones" type="text" placeholder="Repeticiones" value={repeticiones} onChange={(e) => setRepeticiones(e.target.value)} />
 
                     <select name="Series" id="" onChange={handleSeriesChange}>
                         <option value="2">Series</option>
@@ -104,14 +100,13 @@ const CronometroPantalla = ({ ejercicionombre, isOpen, abrirCerrar, marcarCheck 
                 ))}
             </div>
 
-            <Cronometro segundos={5} onIniciarDescanso={handleIniciarDescanso} botonBloqueado={botonBloqueado} />
+            <Cronometro onIniciarDescanso={handleIniciarDescanso} botonBloqueado={botonBloqueado} />
 
             <div className="contenedorDeImagen">
                 <img className="imagenDeCronometro" src={imagenEjercicio} alt="" />
             </div>
 
             <IonButton onClick={abrirCerrar} className="atrasIonButton" color="dark">Atras</IonButton>
-
             <IonButton onClick={enviarDatos} className="enviarIonButton" color="dark">Enviar</IonButton>
         </div>
     )

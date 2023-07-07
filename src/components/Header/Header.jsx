@@ -22,7 +22,6 @@ const Header = ({ sesionIniciada, logueado }) => {
   }
 
   useEffect(() => {
-    console.log("LOGUEADO: ",logueado)
     const unsubscribe = obtenerDisplayNameUsuario((name) => {
       setDisplayName(name);
     })
