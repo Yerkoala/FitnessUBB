@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import LoginInicioSesion from './LoginInicioSesion'
 import "../style.css"
 import { crearNuevoUsuario } from '../../firebase'
-import { IonInput, IonItem, IonLabel } from '@ionic/react'
+
 
 const Login = ({ abierto, cerrarModal, sesionIniciada, logueado }) => {
     const [inicioSesion, setinicioSesion] = useState(false)
@@ -24,11 +24,18 @@ const Login = ({ abierto, cerrarModal, sesionIniciada, logueado }) => {
     const crearCuenta = () => {
         if (window.confirm("¿Está seguro que desea crear esta cuenta?")) {
             if (password !== rePassword) {
-                alert('Las contraseñas no son iguales')
+                alert('Las contraseñas no coinciden')
+                return
             }
             if (username.trim() === '' || password.trim() === '' || correo.trim() === '' || rePassword.trim() === '') {
                 alert('Todos los campos deben estar rellenados')
+                return
             }
+            if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(correo)) {
+                alert('Correo no válido. Por favor, ingrese un correo con el formato example@example.com')
+                return
+            }
+            
             crearNuevoUsuario(correo, password, username)
             setUsername('')
             setCorreo('')
@@ -59,7 +66,7 @@ const Login = ({ abierto, cerrarModal, sesionIniciada, logueado }) => {
 
                     <div className='linea'></div>
                     <p>Ya tienes cuenta? <a onClick={abrirInicioSesion}>Ingresa aquí</a> </p>
-                    <button className='botonAtras' onClick={cerrarModal}>Atras</button>
+                    <button className='botonAtras' onClick={cerrarModal}>Atrás</button>
                 </div>
             </div>
             <LoginInicioSesion inicioSesion={inicioSesion} cerrarInicioSesion={cerrarInicioSesion} abrirCrearCuenta={cerrarModal} sesionIniciada={sesionIniciada} logueado={logueado} />

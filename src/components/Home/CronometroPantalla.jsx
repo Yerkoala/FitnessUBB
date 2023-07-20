@@ -1,7 +1,7 @@
 import { IonButton, IonIcon } from '@ionic/react'
 import { ellipseOutline, ellipse } from 'ionicons/icons'
 import ejercicios from '../../ejercicios'
-import { useEffect, useState } from 'react'
+import { useEffect, useState} from 'react'
 import { useAgregarProgresoContext } from '../../provider/EstadisticasProvider'
 import Cronometro from './Cronometro'
 import '../style.css'
@@ -9,7 +9,12 @@ import '../style.css'
 const CronometroPantalla = ({ ejercicionombre, isOpen, abrirCerrar, marcarCheck }) => {
     const agregarProgreso = useAgregarProgresoContext()
 
-
+    /* Estado para controlar el número de íconos de círculo llenos */
+    const [iconosLlenos, setIconosLlenos] = useState(0)
+    const [botonBloqueado, setBotonBloqueado] = useState(false)
+    const [peso, setPeso] = useState([])
+    const [repeticiones, setRepeticiones] = useState([])
+    const [progreso, setProgreso] = useState([])
 
     /*A penas se monta el componente me trae la imagen del ejercicio*/
     const [imagenEjercicio, setimagenEjercicio] = useState(null);
@@ -30,15 +35,8 @@ const CronometroPantalla = ({ ejercicionombre, isOpen, abrirCerrar, marcarCheck 
         setSeriesSeleccionadas(parseInt(e.target.value)); // Se convierte el valor de string a entero
     };
 
-    /* Estado para controlar el número de íconos de círculo llenos */
-    const [iconosLlenos, setIconosLlenos] = useState(0)
-    const [botonBloqueado, setBotonBloqueado] = useState(false)
-    const [peso, setPeso] = useState([])
-    const [repeticiones, setRepeticiones] = useState([])
-    const [progreso, setProgreso] = useState([])
 
     const handleIniciarDescanso = () => {
-
         const nuevoProgreso = {
             peso: peso,
             repeticiones: repeticiones,
@@ -74,11 +72,11 @@ const CronometroPantalla = ({ ejercicionombre, isOpen, abrirCerrar, marcarCheck 
 
     return (
         <div className={isOpen ? "cronometroPantalla" : "cronometroPantallaCerrado"} onClick={handleOnClick}>
-            <h2 style={{ fontWeight: 'bold',fontSize:"35px" }}>{ejercicionombre}</h2>
+            <h2 style={{ fontWeight: 'bold', fontSize: "35px" }}>{ejercicionombre}</h2>
             <div className="fondoFormularioDeCronometro">
                 <div className="formularioDeCronometro">
                     <input className="inputsCronometro" id="peso" type="text" placeholder="Peso en kg" value={peso} onChange={(e) => setPeso(e.target.value)} />
-                    <input className="inputsCronometro" id="repeticiones" type="text" placeholder="Repeticiones" value={repeticiones} onChange={(e) => setRepeticiones(e.target.value)} />
+                    <input className="inputsCronometro" id="repeticiones" type="text" placeholder="Repeticiones" value={repeticiones} onChange={(e) => setRepeticiones(e.target.value)}  />
 
                     <select name="Series" id="" onChange={handleSeriesChange}>
                         <option value="2">Series</option>
@@ -100,13 +98,13 @@ const CronometroPantalla = ({ ejercicionombre, isOpen, abrirCerrar, marcarCheck 
                 ))}
             </div>
 
-            <Cronometro onIniciarDescanso={handleIniciarDescanso} botonBloqueado={botonBloqueado} />
+            <Cronometro onIniciarDescanso={handleIniciarDescanso} botonBloqueado={botonBloqueado} peso={peso} repeticiones={repeticiones}/>
 
             <div className="contenedorDeImagen">
                 <img className="imagenDeCronometro" src={imagenEjercicio} alt="" />
             </div>
 
-            <IonButton onClick={abrirCerrar} className="atrasIonButton" color="dark">Atras</IonButton>
+            <IonButton onClick={abrirCerrar} className="atrasIonButton" color="dark">Atrás</IonButton>
             <IonButton onClick={enviarDatos} className="enviarIonButton" color="dark">Enviar</IonButton>
         </div>
     )

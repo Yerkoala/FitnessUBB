@@ -48,7 +48,7 @@ const LoginInicioSesion = ({ inicioSesion, cerrarInicioSesion,abrirCrearCuenta,s
                 </div>
                 {error && <p className="errorMensaje">{error}</p>} {/* Muestra el mensaje de error si existe */}
                 <button className='botonIniciarSesion' onClick={iniciarSesion}>Iniciar sesión</button>
-                <button className='botonAtras' onClick={volverAtras}>Atras</button>
+                <button className='botonAtras' onClick={volverAtras}>Atrás</button>
             </div>
         </div>
     )

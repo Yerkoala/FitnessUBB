@@ -5,7 +5,8 @@ import CartaRutinaPropias from './CartaRutinaPropias'
 import { useRutinaContext } from '../../provider/RutinasProvider'
 import { IonButton } from "@ionic/react"
 import CrearRutina from "./CrearRutina"
-import { useState} from "react"
+import { useState } from "react"
+
 
 const PrincipalHome = () => {
 
@@ -15,6 +16,8 @@ const PrincipalHome = () => {
     const abrirCerrarCrearRutina = () => {
         setAbierto(!abierto)
     }
+
+      
 
     return (
         <div className='principalPantalla'>

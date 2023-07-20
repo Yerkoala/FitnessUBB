@@ -1,5 +1,6 @@
 import "../style.css"
 import { useState, useEffect } from "react"
+import moment from "moment"
 import CronometroPantalla from "./CronometroPantalla"
 
 const CheckEjerciciosDiv = ({ ejercicionombre }) => {
@@ -15,21 +16,22 @@ const CheckEjerciciosDiv = ({ ejercicionombre }) => {
 
   const abrirCerrar = () => {
     setAbierto(!abierto)
-  }
+  };
 
   const marcarCheck = () => {
     setIsChecked(true)
     localStorage.setItem(ejercicionombre, "true")
-  }
+  };
 
   useEffect(() => {
     const storedDate = localStorage.getItem("lastCheckedDate")
-    const currentDate = new Date().toLocaleDateString()
+    const currentDate = moment().format("DD-MM-YYYY")
+
     if (storedDate !== currentDate) {
-      setIsChecked(false)
-      localStorage.setItem("lastCheckedDate", currentDate)
+      setIsChecked(false);
+      localStorage.setItem("lastCheckedDate", currentDate);
     }
-  }, [])
+  }, []);
 
   return (
     <div className="CheckEjerciciosDiv" onClick={abrirCerrar}>
@@ -42,7 +44,7 @@ const CheckEjerciciosDiv = ({ ejercicionombre }) => {
         ejercicionombre={ejercicionombre}
       />
     </div>
-  )
-}
+  );
+};
 
 export default CheckEjerciciosDiv

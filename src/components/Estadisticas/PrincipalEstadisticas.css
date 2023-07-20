@@ -81,3 +81,13 @@
     padding: 0;
 
 }
+
+.fechaTranscurrida {
+    font-weight: bold;
+    font-size: 1.3rem;
+    border: none;
+    outline: none;
+    text-align: center;
+    background-color: white;
+  }
+  

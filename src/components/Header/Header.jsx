@@ -39,7 +39,7 @@ const Header = ({ sesionIniciada, logueado }) => {
         {!logueado &&
           <>
             <IonIcon icon={person}></IonIcon>
-            <button onClick={abrirCerrar}><strong>Iniciar Sesion</strong></button>
+            <button onClick={abrirCerrar}><strong>Iniciar Sesión</strong></button>
           </>
         }
         {
